@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'localhost:5167/graphql',
+  uri: 'http://localhost:5167/graphql/',
   cache: new InMemoryCache(),
 });
 
