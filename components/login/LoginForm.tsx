@@ -20,6 +20,7 @@ const LoginForm = () => {
     if(response.ok) {
       console.log(data.token);
       localStorage.setItem('token', data.token);
+      window.location.href = '/admin/dashboard';
     }
     else {
         console.error(data.message);
