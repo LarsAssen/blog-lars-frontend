@@ -1,5 +1,6 @@
 import React from "react";
 import { getPosts, createPost } from "@/services/post/postService";
+import Link from "next/link";
 
 const AdminPostList: React.FC = () => {
     const [posts, setPosts] = React.useState<any>([]);
@@ -13,15 +14,13 @@ const AdminPostList: React.FC = () => {
         loadPosts();
     }, []);
 
-    const handleCreatePost = async () => {
-        const newPost = await createPost("New Post", "New Content", "New Description", "https://via.placeholder.com/150", 0, "draft", new Date().toISOString(), new Date().toISOString());
-        console.log(newPost);
-        loadPosts();
-    }
+   
 
     return (
         <div>
-            <button onClick={handleCreatePost}>Create Post</button>
+            <Link href="/admin/posts/new">
+                Create New Post
+            </Link>
             {posts.map((post:any) => (
                 <div key={post.id}>
                     <h2>{post.title}</h2>
