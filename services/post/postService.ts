@@ -1,5 +1,5 @@
 import client from "../../lib/apollo-client";
-import { CREATE_POST, UPDATE_POST } from "./mutations";
+import { CREATE_POST, UPDATE_POST, DELETE_POST } from "./mutations";
 import { GET_POSTS, GET_POST_BY_ID } from "./queries";
 
 export async function createPost(
@@ -74,4 +74,13 @@ export async function getPost(id: string) {
   });
 
   return data.postById;
+}
+
+export async function deletePost(id: string) {
+  const { data } = await client.mutate({
+    mutation: DELETE_POST,
+    variables: { id },
+    refetchQueries: [{ query: GET_POSTS }],
+  });
+  return data.deletePost;
 }

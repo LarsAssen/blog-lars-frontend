@@ -1,5 +1,5 @@
 import React from "react";
-import { getPosts, createPost } from "@/services/post/postService";
+import { getPosts, deletePost } from "@/services/post/postService";
 import Link from "next/link";
 
 const AdminPostList: React.FC = () => {
@@ -14,6 +14,17 @@ const AdminPostList: React.FC = () => {
         loadPosts();
     }, []);
 
+    const handleDelete = async (id: string) => {
+        const result = await deletePost(id);
+        if (result) {
+            alert("Post deleted successfully");
+            loadPosts();
+        }
+        else {
+            alert("Failed to delete post");
+        }
+    }
+
    
 
     return (
@@ -26,6 +37,7 @@ const AdminPostList: React.FC = () => {
                     <h2>{post.title}</h2>
                     <p>{post.description}</p>
                     <Link href={`/admin/posts/${post.id}`}>Edit</Link>
+                    <button onClick={() => handleDelete(post.id)}>Delete</button>
                 </div>
             ))}
         </div>
