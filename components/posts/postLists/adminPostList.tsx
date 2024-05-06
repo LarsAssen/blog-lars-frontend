@@ -25,6 +25,7 @@ const AdminPostList: React.FC = () => {
                 <div key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.description}</p>
+                    <Link href={`/admin/posts/${post.id}`}>Edit</Link>
                 </div>
             ))}
         </div>

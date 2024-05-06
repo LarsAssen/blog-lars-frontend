@@ -15,3 +15,19 @@ export const CREATE_POST = gql`
     }
   }
 `;
+
+export const UPDATE_POST = gql`
+  mutation updatePost($id: String!, $input: UpdatePostInput!) {
+    updatePost(id: $id, input: $input) {
+      id
+      title
+      content
+      description
+      thumbnailImageUrl
+      likes
+      status
+      createdAt
+      updatedAt
+    }
+  }
+`;
