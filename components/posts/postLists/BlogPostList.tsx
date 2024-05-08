@@ -1,6 +1,8 @@
 import React from "react";
 import { Post } from "@/types/index";
 import { getPosts } from "@/services/post/postService";
+import BlogPostCard from "../BlogPostCard";
+import { CardContainer } from "@/styles/Posts/BlogPostCardStyles";
 
 const BlogPostList: React.FC = () => {
   const [posts, setPosts] = React.useState<Post[]>([]);
@@ -18,12 +20,11 @@ const BlogPostList: React.FC = () => {
   return (
     <div>
       <h1>Blog Post List</h1>
+      <CardContainer>
       {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.Title}</h2>
-          <p>{post.Description}</p>
-        </div>
+        <BlogPostCard key={post.id} post={post} />
       ))}
+      </CardContainer>
     </div>
   );
 };

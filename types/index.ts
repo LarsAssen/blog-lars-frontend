@@ -8,4 +8,5 @@ export interface Post {
   AllowComments: boolean;
   SEO: string;
   publishedAt: string;
+  HeaderImage: string;
 }

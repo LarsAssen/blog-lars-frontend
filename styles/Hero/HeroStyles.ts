@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HeroContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh; // Adjust height as necessary
+  height: 100vh; // Adjust height as necessary
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,7 @@ position: absolute;
 top: 0;
 left: 0;
 width: 100%;
-height: 100%;
+height: 100vh;
 z-index: -1;
 
 &::after {
