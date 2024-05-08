@@ -23,20 +23,19 @@ const sizeStyles = {
 
 const variantStyles = {
   primary: css`
-    background-color: ${({ theme }) => theme.fourthColor};
-    border: 2px solid ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.buttonBackground};
+    color: ${({ theme }) => theme.buttonTextColor};
     &:hover {
       background-color: ${({ theme }) => theme.secondaryColor};
       color: ${({ theme }) => theme.primaryColor};
     }
   `,
   secondary: css`
-    background-color: ${({ theme }) => theme.secondaryColor};
-    color: ${({ theme }) => theme.primaryColor};
+    background-color: ${({ theme }) => theme.buttonSecondaryBackground};
+    color: ${({ theme }) => theme.buttonSecondaryTextColor};
     &:hover {
-      background-color: ${({ theme }) => theme.primaryColor};
-      color: ${({ theme }) => theme.secondaryColor};
+      background-color: ${({ theme }) => theme.buttonBackground};
+      color: ${({ theme }) => theme.buttonTextColor};
     }
   `,
 };
@@ -46,6 +45,7 @@ export const StyledButton = styled.button<ButtonProps>`
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   ${({ size }) => sizeStyles[size]};
   ${({ variant }) => variantStyles[variant]};

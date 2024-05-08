@@ -2,16 +2,21 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    theme: string;
     body: string;
     text: string;
-    toggleBorder: string;
-    background: string;
+    theme: string;
+    textSecondary: string;
     primaryColor: string;
     secondaryColor: string;
-    tertiaryColor: string;
-    fourthColor: string;
-    fifthColor: string;
+    accentColor: string;
+    backgroundCard: string;
+    backgroundNavbar: string;
+    linkColor: string;
+    titleColor: string;
+    buttonBackground: string;
+    buttonTextColor: string;
+    buttonSecondaryBackground: string;
+    buttonSecondaryTextColor: string;
     fontFamily: string;
   }
 }
