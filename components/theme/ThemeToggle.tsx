@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import { ThemeContext } from "@/pages/_app";
+import Button from "../UI/Button";
 
 const ThemeToggle = () => {
   const {theme, setTheme } = useContext(ThemeContext);
 
-  const toggleTheme = () => {
-    setTheme(theme.theme === "light" ? "dark" : "light");
-  }
-
   return (
-    <button onClick={() => setTheme(theme.theme === "light" ? "dark" : "light")}>
+    <Button variant="secondary" onClick={() => setTheme(theme.theme === "light" ? "dark" : "light")}>
       Toggle Theme
-    </button>
+    </Button>
   );
 };
 
