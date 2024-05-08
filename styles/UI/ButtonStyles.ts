@@ -23,8 +23,9 @@ const sizeStyles = {
 
 const variantStyles = {
   primary: css`
-    background-color: ${({ theme }) => theme.primaryColor};
-    color: ${({ theme }) => theme.secondaryColor};
+    background-color: ${({ theme }) => theme.fourthColor};
+    border: 2px solid ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.background};
     &:hover {
       background-color: ${({ theme }) => theme.secondaryColor};
       color: ${({ theme }) => theme.primaryColor};
