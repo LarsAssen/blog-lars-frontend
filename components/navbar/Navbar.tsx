@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import ThemeToggle from '../theme/ThemeToggle';
 
 
 const Nav = styled.nav`
@@ -83,6 +84,7 @@ const Navbar: React.FC = () => {
                         <div>Login</div>
                     </Link>
                 </li>
+                <ThemeToggle />
             </NavbarList>
         </Nav>
     );
