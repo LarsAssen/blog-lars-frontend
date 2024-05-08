@@ -9,6 +9,9 @@ declare module "styled-components" {
     background: string;
     primaryColor: string;
     secondaryColor: string;
+    tertiaryColor: string;
+    fourthColor: string;
+    fifthColor: string;
     fontFamily: string;
   }
 }
