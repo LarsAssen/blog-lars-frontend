@@ -1,8 +1,6 @@
 import Hero from "@/components/hero/Hero";
 import Layout from "@/components/layout";
 import BlogPostList from "@/components/posts/postLists/BlogPostList";
-import Button from "@/components/UI/Button";
-import Title from "@/components/UI/Title";
 
 const Home: React.FC = () => {
 

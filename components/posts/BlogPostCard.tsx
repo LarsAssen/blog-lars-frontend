@@ -11,7 +11,7 @@ const BlogPostCard:React.FC<{post:Post}> = ({post}) => {
                 <CardDescription>{post.Description}</CardDescription>
                 <div>{post.publishedAt}</div>
                 <div>{post.ReadTime} min read</div>
-                <Link href={post.Slug} passHref>
+                <Link href={`posts/${post.Slug}`} passHref>
                 <CardButton>Read More</CardButton>
                 </Link>
             </CardContent>

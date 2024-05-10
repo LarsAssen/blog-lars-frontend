@@ -3,19 +3,20 @@ import { Post } from '@/types'
 import React from 'react'
 import client from '@/lib/apollo-client'
 import { GET_ALL_POST_SLUGS, GET_POST_BY_SLUG } from '@/queries/postQueries'
-import { mapPost, mapPosts } from '@/mappers/postMapper'
+import { mapPost } from '@/mappers/postMapper'
+import Layout from '@/components/layout'
+import Article from '@/components/posts/postArticle/Article'
 
 interface PostProps {
     post: Post
     }
 
 const PostPage: React.FC<PostProps> = ({ post }) => {
-    console.log(post)
+
     return (
-        <div className="bg-gray-100 p-4">
-            <h1 className="text-2xl font-bold mb-4">{post.Title}</h1>
-            <p className="text-gray-700">{post.Description}</p>
-        </div>
+        <Layout>
+        <Article title={post.Title} imageUrl={post.HeaderImage} content={post.Content} />
+        </Layout>
     )
 }
 
@@ -46,7 +47,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         throw new Error(`Errors returned from the server: ${errors.map(e => e.message).join(', ')}`);
     }
     const post = mapPost(data.posts.data[0])
-    console.log(post)
 
     if (!post) {
         return {
