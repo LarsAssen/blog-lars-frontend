@@ -5,13 +5,15 @@ export const Card = styled.div`
   margin: 10px;
   background: ${({ theme }) => theme.backgroundCard};
   color: ${({ theme }) => theme.text};
-  border: 1px solid ${({ theme }) => theme.secondaryColor};
   border-radius: 8px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  box-shadow: ${({ theme }) => theme.cardShadow};  // Using theme-based shadow
+  transition: transform 0.3s, box-shadow 0.3s; 
+
 
   &:hover {
     transform: translateY(-5px); // Slight lift effect on hover
+    box-shadow: ${({ theme }) => theme.cardShadow}, 0 12px 24px rgba(0, 0, 0, 0.1);
   }
 `;
 

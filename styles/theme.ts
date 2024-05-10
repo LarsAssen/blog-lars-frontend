@@ -17,6 +17,7 @@ export const lightTheme: DefaultTheme = {
   buttonSecondaryTextColor: "#FFFFFF",
   fontFamily: '"Arial", sans-serif',
   theme: "light",
+  cardShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
 };
 
 export const darkTheme: DefaultTheme = {
@@ -26,7 +27,7 @@ export const darkTheme: DefaultTheme = {
   primaryColor: "#ffa948",
   secondaryColor: "#1b666b",
   accentColor: "#a64510",
-  backgroundCard: "#0e3308",
+  backgroundCard: "#103048",
   backgroundNavbar: "#023e48",
   linkColor: "#ffa948",
   titleColor: "#E0E0E0",
@@ -36,4 +37,5 @@ export const darkTheme: DefaultTheme = {
   buttonSecondaryTextColor: "#FFFFFF",
   fontFamily: '"Arial", sans-serif',
   theme: "dark",
+  cardShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
 };
