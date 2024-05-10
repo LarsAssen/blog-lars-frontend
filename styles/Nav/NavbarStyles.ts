@@ -10,7 +10,8 @@ export const StyledNavbar = styled.nav<{ scrolled: boolean }>`
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease-out;
-  background-color: ${({ scrolled }) => (scrolled ? "#fff" : "transparent")};
+  background-color: ${({ scrolled, theme }) =>
+    scrolled ? theme.backgroundCard : "transparent"};
   box-shadow: ${({ scrolled }) =>
     scrolled ? "0 2px 5px rgba(0, 0, 0, 0.2)" : "none"};
   z-index: 1000;
