@@ -10,7 +10,6 @@ const BlogPostList: React.FC = () => {
   React.useEffect(() => {
     const fetchPosts = async () => {
       const posts = await getPosts();
-      console.log(posts[0]);
       setPosts(posts);
     };
 

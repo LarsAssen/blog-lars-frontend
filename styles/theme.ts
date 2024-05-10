@@ -37,5 +37,5 @@ export const darkTheme: DefaultTheme = {
   buttonSecondaryTextColor: "#FFFFFF",
   fontFamily: '"Arial", sans-serif',
   theme: "dark",
-  cardShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+  cardShadow: "0 4px 8px rgba(255, 255, 255, 0.2)",
 };
