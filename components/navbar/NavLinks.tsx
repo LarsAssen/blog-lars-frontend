@@ -13,9 +13,9 @@ const NavLinks:React.FC = () => {
     <NavLinkContainer>
       <Link href="/"><NavLink active={isActive('/')}>Home</NavLink></Link>
       <Link href="/posts"><NavLink active={isActive('/')}>Posts</NavLink></Link>
-      <Link href="/services"><NavLink active={isActive('/')}>About</NavLink></Link>
-      <Link href="/contact"><NavLink active={isActive('/')}>Contact</NavLink></Link>
-      <Link href="/login"><NavLink active={isActive('/')}>Login</NavLink></Link>
+      <Link href="/about"><NavLink active={isActive('/')}>About</NavLink></Link>
+      {/* <Link href="/contact"><NavLink active={isActive('/')}>Contact</NavLink></Link>
+      <Link href="/login"><NavLink active={isActive('/')}>Login</NavLink></Link> */}
       <ThemeToggle />
     </NavLinkContainer>
   );
