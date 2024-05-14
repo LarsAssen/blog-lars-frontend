@@ -1,11 +1,12 @@
 import { CopyRight, FooterContainer, FooterContent, FooterLinks, SocialMedia } from '@/styles/Footer/FooterStyles';
 import Image from 'next/image';
 import Link from 'next/link';
+import logo from '../../lib/logo.png'
 
 const Footer = () => (
   <FooterContainer>
     <FooterContent>
-      <Image src="/logo-white.svg" alt="Company Logo" width={100} height={50} />
+      <Image src={logo.src} alt="Company Logo" width={100} height={50} />
       <FooterLinks>
         <Link href="/about">About Us</Link>
         <Link href="/blog">Blog</Link>

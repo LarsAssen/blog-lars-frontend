@@ -21,45 +21,63 @@ const PostPage: React.FC<PostProps> = ({ post }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const { data } = await client.query({
-        query: GET_ALL_POST_SLUGS
-    })
-
-    const slugs = data.posts.data.map((slug:any) => slug.attributes.Slug)
-    const paths = slugs.map((slug:any) => ({
-        params: { slug: slug }
-    }))
-
-    return {
-        paths,
-        fallback: true
-    }
+    
+    try{
+        const { data } = await client.query({
+            query: GET_ALL_POST_SLUGS
+        })
+    
+        const slugs = data.posts.data.map((slug:any) => slug.attributes.Slug)
+        const paths = slugs.map((slug:any) => ({
+            params: { slug: slug }
+        }))
+    
+        return {
+            paths,
+            fallback: true
+        }
+    } catch (error) {
+        console.error('Error fetching post:', error);
+        return {
+            paths: [],
+            fallback: 'blocking', // Handle fallback gracefully
+          };
+      } 
 }
 
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const { data, errors } = await client.query({
-        query: GET_POST_BY_SLUG,
-        variables: { slug: params?.slug }
-    })
-    if(errors) {
-        console.error(errors);
-        throw new Error(`Errors returned from the server: ${errors.map(e => e.message).join(', ')}`);
-    }
-    const post = mapPost(data.posts.data[0])
-
-    if (!post) {
+    
+    try{
+        const { data, errors } = await client.query({
+            query: GET_POST_BY_SLUG,
+            variables: { slug: params?.slug }
+        })
+        if(errors) {
+            console.error(errors);
+            throw new Error(`Errors returned from the server: ${errors.map(e => e.message).join(', ')}`);
+        }
+        const post = mapPost(data.posts.data[0])
+    
+        if (!post) {
+            return {
+                notFound: true
+            }
+        }
+    
         return {
-            notFound: true
+            props: {
+                post: post
+            },
+            revalidate: 1
         }
     }
-
-    return {
-        props: {
-            post: post
-        },
-        revalidate: 1
-    }
+    catch (error) {
+        console.error('Error fetching post:', error);
+        return {
+          notFound: true,
+        };
+      }
 }
 
 export default PostPage;
