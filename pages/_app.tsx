@@ -9,7 +9,7 @@ type ThemeContextType = {
     setTheme: (themeName: 'light' | 'dark') => void;
 };
 
-export const ThemeContext = React.createContext<ThemeContextType>({
+export const ThemeContext = React.createContext<ThemeContextType | undefined>({
     theme: lightTheme,
     setTheme: () => {},
 });

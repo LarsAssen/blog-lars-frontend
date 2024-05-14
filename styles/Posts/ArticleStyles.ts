@@ -24,7 +24,7 @@ export const ContentBlock = styled.div`
 export const StyledParagraph = styled.p`
   font-size: 16px; // Example size, adjust as needed
   line-height: 1.5;
-  color: #333;
+  color: ${({ theme }) => theme.text};
   margin-bottom: 16px;
 `;
 

@@ -1,5 +1,6 @@
 import Hero from "@/components/hero/Hero";
 import Layout from "@/components/layout";
+import NewsletterForm from "@/components/newsletter/NewsletterForm";
 import BlogPostList from "@/components/posts/postLists/BlogPostList";
 
 const Home: React.FC = () => {
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
         throw new Error("Function not implemented.");
       } }  />
       <BlogPostList />
+      <NewsletterForm />
     </Layout>
   );
 }

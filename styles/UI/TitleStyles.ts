@@ -38,5 +38,6 @@ export const StyledTitle = styled.h1<TitleProps>`
     height: 3px;
     background-color: ${({ theme }) => theme.primaryColor};
     margin-top: 8px;
+    margin-bottom: 20px;
   }
 `;

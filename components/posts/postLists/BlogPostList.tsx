@@ -3,6 +3,7 @@ import { Post } from "@/types/index";
 import { getPosts } from "@/services/post/postService";
 import BlogPostCard from "../BlogPostCard";
 import { CardContainer } from "@/styles/Posts/BlogPostCardStyles";
+import styled from "styled-components";
 
 const BlogPostList: React.FC = () => {
   const [posts, setPosts] = React.useState<Post[]>([]);
@@ -16,15 +17,19 @@ const BlogPostList: React.FC = () => {
     fetchPosts();
   }, []);
 
+  const StyledPostList = styled.div`
+   margin: 50px auto;
+   `;
+
   return (
-    <div>
+    <StyledPostList>
       <h1>Blog Post List</h1>
       <CardContainer>
       {posts.map((post) => (
         <BlogPostCard key={post.id} post={post} />
       ))}
       </CardContainer>
-    </div>
+    </StyledPostList>
   );
 };
 
