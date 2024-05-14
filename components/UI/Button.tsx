@@ -10,7 +10,8 @@ type Props = {
     };
 
 const Button:React.FC<Props> = ({ children, onClick, variant='primary', size ='medium' }) => {
-    const { theme } = useContext(ThemeContext);
+    const context = useContext(ThemeContext);
+    const theme = context?.theme;
 
     return (
         <StyledButton theme={theme} onClick={onClick} variant={variant} size={size}>

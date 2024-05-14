@@ -4,12 +4,12 @@ import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { lightTheme, darkTheme } from '../styles/theme';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
-type ThemeContextType = {
+export type ThemeContextType = {
     theme: DefaultTheme;
     setTheme: (themeName: 'light' | 'dark') => void;
 };
 
-export const ThemeContext = React.createContext<ThemeContextType | undefined>({
+export const ThemeContext = React.createContext<ThemeContextType>({
     theme: lightTheme,
     setTheme: () => {},
 });
