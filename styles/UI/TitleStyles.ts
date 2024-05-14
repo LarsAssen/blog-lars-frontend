@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 interface TitleProps {
-  level: 1 | 2 | 3 | 4 | 5 | 6;
+  level: number | undefined;
 }
 
-const getFontSize = (level: number) => {
+const getFontSize = (level: number | undefined) => {
   switch (level) {
     case 1:
       return "2.5rem";
@@ -38,5 +38,6 @@ export const StyledTitle = styled.h1<TitleProps>`
     height: 3px;
     background-color: ${({ theme }) => theme.primaryColor};
     margin-top: 8px;
+    margin-bottom: 20px;
   }
 `;
