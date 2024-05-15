@@ -1,6 +1,21 @@
 import { Post } from "@/types";
 
 export const mapPost = (post: any): Post => {
+  if (!post) {
+    return {
+      id: "",
+      Title: "",
+      Description: "",
+      ReadTime: 0,
+      Slug: "",
+      Content: [],
+      AllowComments: false,
+      SEO: "",
+      publishedAt: "",
+      HeaderImage: "",
+    };
+  }
+
   return {
     id: post.id,
     Title: post.attributes.Title,
