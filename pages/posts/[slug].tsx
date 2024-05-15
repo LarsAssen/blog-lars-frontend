@@ -12,7 +12,7 @@ interface PostProps {
     }
 
 const PostPage: React.FC<PostProps> = ({ post }) => {
-
+    console.log(post)
     return (
         <Layout>
         <Article title={post.Title} imageUrl={post.HeaderImage} content={post.Content} />
