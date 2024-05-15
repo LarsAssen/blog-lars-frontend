@@ -6,6 +6,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/UI/Button";
+import styled from "styled-components";
 
 interface ArticleProps {
     title: string;
@@ -13,12 +14,19 @@ interface ArticleProps {
     content: ContentBlock[];
 }
 
+const BackButtonDiv = styled.div`
+    margin-bottom: 1rem;
+    display: flex;
+`;
+
 const Article: React.FC<ArticleProps> = ({title, imageUrl, content}) => {
     return (
         <PostContainer>
+            <BackButtonDiv>
             <Link href="/posts" passHref> 
                 <Button >Back to posts</Button>
             </Link>
+            </BackButtonDiv>
             <Title level={1}>{title}</Title>
             <HeaderImage>
             <Image src={imageUrl} alt={title} layout='fill' objectFit='cover'/>

@@ -26,7 +26,7 @@ export const mapPost = (post: any): Post => {
     AllowComments: post.attributes.AllowComments,
     SEO: post.attributes.SEO,
     publishedAt: post.attributes.publishedAt,
-    HeaderImage: `http://localhost:1337${post.attributes.HeaderImage.data.attributes.url}`,
+    HeaderImage: `${process.env.NEXT_PUBLIC_URL}${post.attributes.HeaderImage.data.attributes.url}`,
   };
 };
 

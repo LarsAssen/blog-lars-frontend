@@ -4,14 +4,20 @@ import { getPosts } from "@/services/post/postService";
 import BlogPostCard from "../BlogPostCard";
 import { CardContainer } from "@/styles/Posts/BlogPostCardStyles";
 import styled from "styled-components";
+import Title from "@/components/UI/Title";
 
-const BlogPostList: React.FC = () => {
+interface PostListProps {
+  limit?: number; // Optional prop to limit the number of posts
+}
+
+const BlogPostList: React.FC<PostListProps> = ({ limit }) => {
   const [posts, setPosts] = React.useState<Post[]>([]);
 
   React.useEffect(() => {
     const fetchPosts = async () => {
       const posts = await getPosts();
-      setPosts(posts);
+      const limitedPosts = limit ? posts.slice(0, limit) : posts;
+      setPosts(limitedPosts);
     };
 
     fetchPosts();
@@ -23,7 +29,7 @@ const BlogPostList: React.FC = () => {
 
   return (
     <StyledPostList>
-      <h1>Blog Post List</h1>
+      <Title level={1}>Blog Post List</Title>
       <CardContainer>
       {posts.map((post) => (
         <BlogPostCard key={post.id} post={post} />

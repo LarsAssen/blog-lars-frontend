@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PostContainer = styled.div`
   max-width: 800px;
   margin: 20px auto;
-  margin-top: 40px;
+  margin-top: 100px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
