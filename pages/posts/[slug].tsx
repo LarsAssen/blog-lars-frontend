@@ -25,17 +25,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
         const { data } = await client.query({
             query: GET_ALL_POST_SLUGS
         })
-        console.log("data " + data)
         const slugs = data.posts.data.map((slug:any) => slug.attributes.Slug)
         const paths = slugs.map((slug:any) => ({
             params: { slug: slug }
         }))
-        console.log("paths " + paths)
+        console.log("Success! Paths fetched")
         return {
             paths,
             fallback: true
         }
     } catch (error) {
+        console.log("Error fetching paths");
         console.error('Error fetching post:', error);
         return {
             paths: [],
@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 notFound: true
             }
         }
-    
+        console.log("Success! Post fetched")
         return {
             props: {
                 post,
@@ -74,6 +74,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
     catch (error) {
         console.error('Error fetching post:', error);
+        console.log("Error fetching post")
         return {
           notFound: true,
         };
