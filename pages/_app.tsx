@@ -27,7 +27,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ThemeContext.Provider value={{theme, setTheme}}>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Component {...pageProps} />;
+    <Component {...pageProps} />
     </ThemeProvider>
     </ThemeContext.Provider>
     )

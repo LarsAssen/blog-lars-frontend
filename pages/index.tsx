@@ -5,9 +5,10 @@ import BlogPostList from "@/components/posts/postLists/BlogPostList";
 import { env } from "process";
 
 const Home: React.FC = () => {
+  console.log(process.env.NEXT_PUBLIC_URL);
   return (
     <Layout>
-      <Hero title={"My Blog"} text={"Welcome to my blog. I hope you enjoy it."} imageUrl={"http://localhost:1337/uploads/7716_20220618_084712_231254754_original_d4b611cdc2.jpg"} primaryButtonText={"Blog"} secondaryButtonText={"Newsletter"} primaryButtonOnClick={function (): void {
+      <Hero title={"My Blog"} text={"Welcome to my blog. I hope you enjoy it."} imageUrl="https://blog-lars-backend-pjobs.ondigitalocean.app/uploads/hero_bf0f08bdb3.jpg" primaryButtonText={"Blog"} secondaryButtonText={"Newsletter"} primaryButtonOnClick={function (): void {
         throw new Error("Function not implemented.");
       } } secondaryButtonOnClick={function (): void {
         throw new Error("Function not implemented.");

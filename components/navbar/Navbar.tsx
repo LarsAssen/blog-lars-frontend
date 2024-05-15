@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { use, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyledNavbar } from '@/styles/Nav/NavbarStyles';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
-import styled, { ThemeContext, useTheme } from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import logo from '../../lib/logo.png';
 import logoLight from '../../lib/logo-light.png';
 
@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
     }, []);
 
     const LogoImage = styled.img`
-    width: 100px; // Adjust size as needed
+    width: 80px; // Adjust size as needed
     height: auto;
     `;
 
