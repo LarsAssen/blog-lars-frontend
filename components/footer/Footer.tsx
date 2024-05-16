@@ -2,11 +2,24 @@ import { CopyRight, FooterContainer, FooterContent, FooterLinks, SocialMedia } f
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../lib/logo.png'
+import logoLight from '../../lib/logo-light.png';
+import { Instagram, Youtube, Facebook  } from 'styled-icons/boxicons-logos';
+import { Substack } from '@styled-icons/simple-icons/Substack';
+import { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 
-const Footer = () => (
+
+const Footer = () => {
+  const context = useContext(ThemeContext);
+  const theme = context?.theme;
+
+
+  const logosrc = theme == 'dark' ? logo.src : logoLight.src;
+
+return (
   <FooterContainer>
     <FooterContent>
-      <Image src={logo.src} alt="Company Logo" width={100} height={50} />
+      <Image src={logosrc} alt="Company Logo" width={100} height={100} />
       <FooterLinks>
         <Link href="/about">About Us</Link>
         <Link href="/blog">Blog</Link>
@@ -14,18 +27,21 @@ const Footer = () => (
       </FooterLinks>
       <SocialMedia>
         <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-facebook-f"></i>
+          <Facebook size={30} />
         </Link>
-        <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter"></i>
+        <Link href="https://substack.com/@larsassen" target="_blank" rel="noopener noreferrer">
+          <Substack size={20} />
         </Link>
         <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-instagram"></i>
+          <Instagram size={30} />
+        </Link>
+        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <Youtube size={30} />
         </Link>
       </SocialMedia>
-      <CopyRight>© 2023 Your Company Name. All rights reserved.</CopyRight>
+      <CopyRight>Made by Lars Assen</CopyRight>
     </FooterContent>
   </FooterContainer>
 );
-
+}
 export default Footer;

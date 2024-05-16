@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-  background-color: #222;
+  background-color: ${({ theme }) => theme.backgroundCard};
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  margin-top: 30px;
 `;
 
 export const FooterContent = styled.div`
@@ -19,8 +20,9 @@ export const FooterContent = styled.div`
 
 export const FooterLinks = styled.div`
   margin-bottom: 20px;
+  margin-top: 20px;
   a {
-    color: #fff;
+    color: ${({ theme }) => theme.text};
     margin: 0 15px;
     text-decoration: none;
     &:hover {
@@ -31,6 +33,14 @@ export const FooterLinks = styled.div`
 
 export const SocialMedia = styled.div`
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: ${({ theme }) => theme.text};
+  & > * {
+    margin: 0 10px;
+  }
 `;
 
 export const CopyRight = styled.small`
