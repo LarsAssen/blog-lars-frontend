@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <Hero title={"My Blog"} text={"Welcome to my blog. I hope you enjoy it."} imageUrl="https://blog-lars-backend-pjobs.ondigitalocean.app/uploads/hero_163b561477.jpg" primaryButtonText={"Blog"} secondaryButtonText={"Newsletter"} primaryButtonOnClick={handlePrimaryButtonClick} secondaryButtonOnClick={handleSecondaryButtonClick}/>
+      <Hero title={"My Blog"} text={"Welcome to my blog. I hope you enjoy it."} imageUrl="https://res.cloudinary.com/devvbeebq/image/upload/v1715929994/hero_5613a177b7.jpg" primaryButtonText={"Blog"} secondaryButtonText={"Newsletter"} primaryButtonOnClick={handlePrimaryButtonClick} secondaryButtonOnClick={handleSecondaryButtonClick}/>
       <BlogPostList limit={4} />
       <div ref={newsletterRef} >
       <NewsletterForm />
