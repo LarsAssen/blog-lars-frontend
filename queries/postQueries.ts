@@ -61,6 +61,20 @@ export const GET_POST_BY_SLUG = gql`
               }
             }
           }
+          tags {
+            data {
+              attributes {
+                Name
+              }
+            }
+          }
+          category {
+            data {
+              attributes {
+                Name
+              }
+            }
+          }
           createdAt
           updatedAt
           publishedAt

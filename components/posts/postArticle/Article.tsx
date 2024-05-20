@@ -1,12 +1,13 @@
 import Title from "@/components/UI/Title";
 import { HeaderImage, PostContainer } from "@/styles/Posts/ArticleStyles";
-import { ContentBlock } from "@/types";
+import { ContentBlock, Post } from "@/types";
 import Content from "./Content";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/UI/Button";
 import styled from "styled-components";
+import { CategoryIcon, TagIcon, TagPill, TagsContainer } from "@/styles/Posts/BlogPostCardStyles";
 
 interface ArticleProps {
     title: string;
@@ -19,7 +20,27 @@ const BackButtonDiv = styled.div`
     display: flex;
 `;
 
-const Article: React.FC<ArticleProps> = ({title, imageUrl, content}) => {
+export const CategoryPill = styled.div`
+  display: inline-flex; /* Changed to inline-flex to wrap content naturally */
+  align-items: center;
+  background-color: ${({ theme }) => theme.secondaryColor};
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+`;
+
+const Article: React.FC<{post: Post}> = ({post}) => {
     return (
         <PostContainer>
             <BackButtonDiv>
@@ -27,11 +48,25 @@ const Article: React.FC<ArticleProps> = ({title, imageUrl, content}) => {
                 <Button >Back to posts</Button>
             </Link>
             </BackButtonDiv>
-            <Title level={1}>{title}</Title>
+            <TitleContainer>
+            <Title level={1}>{post.Title}</Title>
+            </TitleContainer>
+            <CategoryPill>
+                        <CategoryIcon />
+                        {post.category}
+                    </CategoryPill>
+            <TagsContainer>
+                    {post.tags.map((tag, index) => (
+                        <TagPill key={index}>
+                        <TagIcon />
+                        {tag}
+                        </TagPill>
+                    ))}
+                </TagsContainer>
             <HeaderImage>
-            <Image src={imageUrl} alt={title} layout='fill' objectFit='cover'/>
+            <Image src={post.HeaderImage} alt={post.Title} layout='fill' objectFit='cover'/>
             </HeaderImage>
-            <Content content={content} />
+            <Content content={post.Content} />
         </PostContainer>
     )
 }

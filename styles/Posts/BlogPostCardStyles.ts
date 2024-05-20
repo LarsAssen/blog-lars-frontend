@@ -91,6 +91,7 @@ export const TagsContainer = styled.div`
   gap: 0.5rem;
   justify-content: flex-start;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const TagPill = styled.span`

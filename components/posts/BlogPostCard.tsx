@@ -24,6 +24,7 @@ const BlogPostCard:React.FC<{post:Post}> = ({post}) => {
                 <CardDescription> {post.Description.length > 100 ? `${post.Description.substring(0, 100)}...` : post.Description}</CardDescription>
                 <DateText>{format(new Date(post.publishedAt), 'd MMM yyyy')}</DateText>
                 <div>{post.ReadTime} min read</div>
+
                 <Link href={`posts/${post.Slug}`} passHref>
                 <CardButton>Read More</CardButton>
                 </Link>
