@@ -1,4 +1,4 @@
-import { Card, CardButton, CardContent, CardDescription, CardImage, CardTitle } from "@/styles/Posts/BlogPostCardStyles";
+import { Card, CardButton, CardContent, CardDescription, CardImage, CardTitle, CategoryIcon, CategoryPill, Header, TagIcon, TagPill, TagsContainer } from "@/styles/Posts/BlogPostCardStyles";
 import { Post } from "@/types";
 import { format } from "date-fns";
 import Link from "next/link";
@@ -14,13 +14,27 @@ const BlogPostCard:React.FC<{post:Post}> = ({post}) => {
         <Card>
             <CardImage src={post.HeaderImage} />
             <CardContent>
-                <CardTitle>{post.Title}</CardTitle>
-                <CardDescription>{post.Description}</CardDescription>
+                <Header>
+                    <CardTitle>{post.Title}</CardTitle>
+                    <CategoryPill>
+                        <CategoryIcon />
+                        {post.category}
+                    </CategoryPill>
+                </Header>
+                <CardDescription> {post.Description.length > 100 ? `${post.Description.substring(0, 100)}...` : post.Description}</CardDescription>
                 <DateText>{format(new Date(post.publishedAt), 'd MMM yyyy')}</DateText>
                 <div>{post.ReadTime} min read</div>
                 <Link href={`posts/${post.Slug}`} passHref>
                 <CardButton>Read More</CardButton>
                 </Link>
+                <TagsContainer>
+                    {post.tags.map((tag, index) => (
+                        <TagPill key={index}>
+                        <TagIcon />
+                        {tag}
+                        </TagPill>
+                    ))}
+                </TagsContainer>
             </CardContent>
         </Card>
     );

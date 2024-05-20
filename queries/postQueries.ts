@@ -14,6 +14,20 @@ export const GET_BLOG_POSTS = gql`
           AllowComments
           SEO
           publishedAt
+          tags {
+            data {
+              attributes {
+                Name
+              }
+            }
+          }
+          category {
+            data {
+              attributes {
+                Name
+              }
+            }
+          }
           HeaderImage {
             data {
               attributes {
