@@ -2,7 +2,7 @@ import { StyledTitle } from "@/styles/UI/TitleStyles";
 
 interface TitleProps {
     children: React.ReactNode;
-    level: 1 | 2 | 3 | 4 | 5 | 6;
+    level: number | undefined;
     }
 
 const Title: React.FC<TitleProps> = ({ children, level }) => {

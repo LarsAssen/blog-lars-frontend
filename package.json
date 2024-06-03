@@ -10,11 +10,18 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "date-fns": "^3.6.0",
     "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-feather": "^2.0.10",
     "react-quill": "^2.0.0",
-    "styled-components": "^6.1.9"
+    "styled-components": "^6.1.9",
+    "styled-icons": "^10.47.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -23,7 +30,7 @@
     "autoprefixer": "^10.0.1",
     "babel-plugin-styled-components": "^2.1.4",
     "eslint": "^8",
-    "eslint-config-next": "14.2.1",
+    "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"

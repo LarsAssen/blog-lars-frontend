@@ -4,7 +4,7 @@ import { ThemeProvider, DefaultTheme } from 'styled-components';
 import { lightTheme, darkTheme } from '../styles/theme';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
-type ThemeContextType = {
+export type ThemeContextType = {
     theme: DefaultTheme;
     setTheme: (themeName: 'light' | 'dark') => void;
 };
@@ -27,7 +27,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     <ThemeContext.Provider value={{theme, setTheme}}>
     <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Component {...pageProps} />;
+    <Component {...pageProps} />
     </ThemeProvider>
     </ThemeContext.Provider>
     )
