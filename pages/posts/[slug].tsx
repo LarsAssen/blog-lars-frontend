@@ -7,7 +7,6 @@ import { mapPost } from '@/mappers/postMapper'
 import Layout from '@/components/layout'
 import Article from '@/components/posts/postArticle/Article'
 import { useRouter } from 'next/router'
-import { Head } from 'next/document'
 
 interface PostProps {
     post: Post

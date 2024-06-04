@@ -15,7 +15,7 @@ export const lightTheme: DefaultTheme = {
   buttonTextColor: "#FFFFFF",
   buttonSecondaryBackground: "#1b666b",
   buttonSecondaryTextColor: "#FFFFFF",
-  fontFamily: '"Arial", sans-serif',
+  fontFamily: '"Verdana", sans-serif',
   theme: "light",
   cardShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
 };
