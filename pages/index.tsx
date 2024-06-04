@@ -2,6 +2,7 @@ import Hero from "@/components/hero/Hero";
 import Layout from "@/components/layout";
 import NewsletterForm from "@/components/newsletter/NewsletterForm";
 import BlogPostList from "@/components/posts/postLists/BlogPostList";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { env } from "process";
 import { useRef } from "react";
@@ -21,6 +22,10 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
+      <Head>
+        <title>Lars Assen</title>
+        <meta name="description" content="Welcome to my blog. I hope you enjoy it." />
+      </Head>
       <Hero title={"My Blog"} text={"Welcome to my blog. I hope you enjoy it."} imageUrl="https://res.cloudinary.com/devvbeebq/image/upload/v1715929994/hero_5613a177b7.jpg" primaryButtonText={"Blog"} secondaryButtonText={"Newsletter"} primaryButtonOnClick={handlePrimaryButtonClick} secondaryButtonOnClick={handleSecondaryButtonClick}/>
       <BlogPostList limit={4} />
       <div ref={newsletterRef} >

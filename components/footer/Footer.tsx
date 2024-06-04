@@ -21,21 +21,21 @@ return (
     <FooterContent>
       <Image src={logosrc} alt="Company Logo" width={100} height={100} />
       <FooterLinks>
-        <Link href="/about">About Us</Link>
-        <Link href="/blog">Blog</Link>
+        <Link href="/about">About</Link>
+        <Link href="/posts">Blog</Link>
         <Link href="/">Home</Link>
       </FooterLinks>
       <SocialMedia>
-        <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.facebook.com/lars.assen.9/" target="_blank" rel="noopener noreferrer">
           <Facebook size={30} />
         </Link>
         <Link href="https://substack.com/@larsassen" target="_blank" rel="noopener noreferrer">
           <Substack size={20} />
         </Link>
-        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.instagram.com/larsassen/" target="_blank" rel="noopener noreferrer">
           <Instagram size={30} />
         </Link>
-        <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <Link href="https://www.youtube.com/@juniorassen" target="_blank" rel="noopener noreferrer">
         <Youtube size={30} />
         </Link>
       </SocialMedia>
