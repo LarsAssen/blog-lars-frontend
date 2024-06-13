@@ -3,7 +3,6 @@ import { FolderOpen } from "@styled-icons/fa-solid/FolderOpen";
 import { Tag } from "@styled-icons/fa-solid/Tag";
 
 export const Card = styled.div`
-  margin: 10px;
   background: ${({ theme }) => theme.backgroundCard};
   color: ${({ theme }) => theme.text};
   border-radius: 8px;
@@ -22,7 +21,6 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  padding: 20px;
 `;
 
 export const CardButton = styled.button`
@@ -54,7 +52,8 @@ export const CardContent = styled.div`
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
 `;
 
@@ -67,6 +66,7 @@ export const CardTitle = styled.h2`
 export const CategoryPill = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: 0.5rem;
   background-color: ${({ theme }) => theme.secondaryColor};
   color: white;
   padding: 0.2rem 0.5rem;
@@ -111,6 +111,16 @@ export const TagIcon = styled(Tag)`
 `;
 
 export const DateText = styled.div`
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: ${({ theme }) => theme.textSecondary};
+`;
+
+export const StyledPostList = styled.div`
+  margin: 50px 50px;
+`;
+
+export const TimeToRead = styled.div`
   font-size: 0.9rem;
   color: ${({ theme }) => theme.textSecondary};
 `;

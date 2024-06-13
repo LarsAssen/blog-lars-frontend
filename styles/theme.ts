@@ -34,8 +34,8 @@ export const darkTheme: DefaultTheme = {
   buttonBackground: "#ffa948",
   buttonTextColor: "#071724",
   buttonSecondaryBackground: "#1b666b",
-  buttonSecondaryTextColor: "#FFFFFF",
-  fontFamily: '"Arial", sans-serif',
+  buttonSecondaryTextColor: "#071724",
+  fontFamily: '"Verdana", sans-serif',
   theme: "dark",
   cardShadow: "0 4px 8px rgba(255, 255, 255, 0.2)",
 };

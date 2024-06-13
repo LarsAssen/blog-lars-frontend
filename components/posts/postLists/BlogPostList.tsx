@@ -2,7 +2,7 @@ import React from "react";
 import { Post } from "@/types/index";
 import { getPosts } from "@/services/post/postService";
 import BlogPostCard from "../BlogPostCard";
-import { CardContainer } from "@/styles/Posts/BlogPostCardStyles";
+import { CardContainer, StyledPostList } from "@/styles/Posts/BlogPostCardStyles";
 import styled from "styled-components";
 import Title from "@/components/UI/Title";
 
@@ -22,10 +22,6 @@ const BlogPostList: React.FC<PostListProps> = ({ limit }) => {
 
     fetchPosts();
   }, []);
-
-  const StyledPostList = styled.div`
-   margin: 50px auto;
-   `;
 
   return (
     <StyledPostList>
