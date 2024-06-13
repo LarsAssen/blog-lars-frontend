@@ -64,7 +64,7 @@ export const MobileNavLink = styled.div`
 `;
 
 export const NavLink = styled.div<{ active: boolean }>`
-  color: ${({ active, theme }) => (active ? theme.primaryColor : "white")};
+  color: ${({ active, theme }) => (active ? theme.primaryColor : theme.text)};
   cursor: pointer;
   padding: 0.5rem 1rem;
   text-decoration: ${({ active }) => (active ? "underline" : "none")};
