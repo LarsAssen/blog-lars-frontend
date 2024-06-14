@@ -1,26 +1,39 @@
-import { Card, CardButton, CardContent, CardDescription, CardImage, CardTitle } from "@/styles/Posts/BlogPostCardStyles";
+import { Card, CardButton, CardContent, CardDescription, CardImage, CardTitle, CategoryIcon, CategoryPill, DateText, Header, TagIcon, TagPill, TagsContainer, TimeToRead } from "@/styles/Posts/BlogPostCardStyles";
 import { Post } from "@/types";
 import { format } from "date-fns";
 import Link from "next/link";
 import styled from "styled-components";
+import Title from "../UI/Title";
+import Button from "../UI/Button";
 
-const DateText = styled.div`
-  color: #777;
-  margin-top: 0.5rem;
-`;
 
 const BlogPostCard:React.FC<{post:Post}> = ({post}) => {
     return (
         <Card>
             <CardImage src={post.HeaderImage} />
             <CardContent>
-                <CardTitle>{post.Title}</CardTitle>
-                <CardDescription>{post.Description}</CardDescription>
+                <Header>
+                <CategoryPill>
+                        <CategoryIcon />
+                        {post.category}
+                </CategoryPill>
+                    
+                    <TimeToRead>{post.ReadTime} min read</TimeToRead>
+                    <Title level={5}>{post.Title}</Title>
+                </Header>
+                <CardDescription> {post.Description.length > 100 ? `${post.Description.substring(0, 100)}...` : post.Description}</CardDescription>
                 <DateText>{format(new Date(post.publishedAt), 'd MMM yyyy')}</DateText>
-                <div>{post.ReadTime} min read</div>
                 <Link href={`posts/${post.Slug}`} passHref>
-                <CardButton>Read More</CardButton>
+                <Button>Read More</Button>
                 </Link>
+                <TagsContainer>
+                    {post.tags.map((tag, index) => (
+                        <TagPill key={index}>
+                        <TagIcon />
+                        {tag}
+                        </TagPill>
+                    ))}
+                </TagsContainer>
             </CardContent>
         </Card>
     );

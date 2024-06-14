@@ -16,4 +16,6 @@ export interface Post {
   SEO: string;
   publishedAt: string;
   HeaderImage: string;
+  tags: string[];
+  category: string;
 }

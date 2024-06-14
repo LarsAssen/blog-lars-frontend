@@ -13,6 +13,8 @@ export const mapPost = (post: any): Post => {
       SEO: "",
       publishedAt: "",
       HeaderImage: "",
+      tags: [],
+      category: "",
     };
   }
 
@@ -27,6 +29,8 @@ export const mapPost = (post: any): Post => {
     SEO: post.attributes.SEO,
     publishedAt: post.attributes.publishedAt,
     HeaderImage: post.attributes.HeaderImage.data.attributes.url,
+    tags: post.attributes.tags.data.map((tag: any) => tag.attributes.Name),
+    category: post.attributes.category.data.attributes.Name,
   };
 };
 
