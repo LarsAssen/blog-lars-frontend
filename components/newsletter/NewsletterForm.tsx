@@ -1,26 +1,18 @@
 import { Form, Input } from '@/styles/Newsletter/NewsletterStyles';
 import React, { useState } from 'react';
-import Button from '../UI/Button';
 import Title from '../UI/Title';
+import { Link } from 'react-feather';
+import Button from '../UI/Button';
 
 const NewsletterForm = () => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Email:', email);
+  const handleClick = () => {
+    window.open('https://larsassen.substack.com/subscribe', '_blank');
   };
-
   return (
-    <Form onSubmit={handleSubmit}>
-      <Title level={3}>Subscribe to my newsletter</Title>
-      <Input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <Button onClick={() => {  }}>Subscribe</Button>
+    <Form>
+      <Title level={3}>Subscribe to my Substack newsletter!</Title>
+      <Button onClick={handleClick} >Subscribe
+      </Button>
     </Form>
   );
 };
