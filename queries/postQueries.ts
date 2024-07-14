@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_BLOG_POSTS = gql`
   query {
-    posts {
+    posts(sort: "publishedAt:desc") {
       data {
         id
         attributes {
