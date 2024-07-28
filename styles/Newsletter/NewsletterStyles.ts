@@ -24,13 +24,13 @@ export const InputContainer = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 30%; /* Adjust the width as needed */
   padding: 0.8rem;
   border: 1px solid ${({ theme }) => theme.primaryColor};
   border-radius: 4px;
   background-color: ${({ theme }) => theme.backgroundCard};
   color: ${({ theme }) => theme.text};
-  margin-right: 1rem; /* Space between input and button */
+  margin-top: 1rem;
+  margin-right: 1rem;
   margin-bottom: 1rem;
 `;
 
