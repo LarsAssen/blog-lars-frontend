@@ -1,0 +1,93 @@
+@import '../styles/variables.scss';
+
+.heroSection  {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  .backgroundImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .backgroundOverlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: linear-gradient(to bottom, transparent, $color-primary);
+  }
+
+  .heroContent {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      letter-spacing: -0.05em;
+
+      @media (min-width: 640px) {
+        font-size: 3rem;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 3.75rem;
+      }
+
+      @media (min-width: 1024px) {
+        font-size: 4.5rem;
+      }
+    }
+
+    p {
+      margin-top: 1rem;
+      max-width: 700px;
+      font-size: 1.125rem;
+      color: rgba($color-light, 0.8);
+
+      @media (min-width: 640px) {
+        font-size: 1.25rem;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .heroButtons {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+
+      .exploreButton {
+        background-color: $color-secondary;
+        color: white;
+
+        &:hover {
+          background-color: rgba($color-secondary, 0.9);
+        }
+      }
+
+      .readButton {
+        color: white;
+        border: 1px solid white;
+
+        &:hover {
+          background-color: white;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
