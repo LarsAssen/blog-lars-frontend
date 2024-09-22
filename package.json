@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "biome check .",
+    "format": "biome format .",
+    "format:check": "biome format --ci ."
   },
   "dependencies": {
     "@apollo/client": "^3.10.1",
