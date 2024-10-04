@@ -1,0 +1,150 @@
+/* BlogPostCard.module.scss */
+
+.card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: #f5f1ed;
+  
+    &:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .imageWrapper:hover .image {
+    transform: scale(1.05);
+  }
+  
+  .categoryBadge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #d1703a;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .cardHeader {
+    padding: 1rem;
+    background-color: #29434d;
+    color: #f5f1ed;
+  }
+  
+  .headerInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .date,
+  .readingTime {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: rgba(245, 241, 237, 0.8);
+  }
+  
+  .icon {
+    margin-right: 0.25rem;
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  
+  .description {
+    font-size: 0.875rem;
+    color: rgba(245, 241, 237, 0.8);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+  }
+  
+  .cardContent {
+    padding: 1rem;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tag {
+    background-color: #2d4835;
+    color: #f5f1ed;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    object-fit: cover;
+  }
+  
+  .authorName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #2d4835;
+  }
+  
+  .cardFooter {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .readMore {
+    color: #d1703a;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  .readMoreIcon {
+    margin-left: 0.25rem;
+    height: 1rem;
+    width: 1rem;
+  }
+  

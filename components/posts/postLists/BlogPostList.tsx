@@ -1,8 +1,11 @@
 import React from "react";
 import { Post } from "@/types/index";
 import { getPosts } from "@/services/post/postService";
-import BlogPostCard from "../BlogPostCard";
-import { CardContainer, StyledPostList } from "@/styles/Posts/BlogPostCardStyles";
+import BlogPostCard from "../BlogPostCard/BlogPostCard";
+import {
+  CardContainer,
+  StyledPostList,
+} from "@/styles/Posts/BlogPostCardStyles";
 import styled from "styled-components";
 import Title from "@/components/UI/Title";
 
@@ -27,9 +30,9 @@ const BlogPostList: React.FC<PostListProps> = ({ limit }) => {
     <StyledPostList>
       <Title level={1}>Blog Post List</Title>
       <CardContainer>
-      {posts.map((post) => (
-        <BlogPostCard key={post.id} post={post} />
-      ))}
+        {posts.map((post) => (
+          <BlogPostCard key={post.id} post={post} />
+        ))}
       </CardContainer>
     </StyledPostList>
   );
