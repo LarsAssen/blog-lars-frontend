@@ -1,0 +1,110 @@
+// Article.module.scss
+
+$post-header-height: 300px;
+
+.post-container {
+  padding: 2rem;
+}
+
+.header-container {
+  position: relative;
+  height: $post-header-height;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.header-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(41, 67, 77, 0.7), transparent);
+}
+
+.header-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  color: white;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-button {
+  margin-bottom: 1rem;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tags-container {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.header-image {
+  position: relative;
+  height: $post-header-height;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.like-button {
+  margin-right: 1rem;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.newsletter {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+
+  form {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.comments-section {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+
+  form {
+    margin-top: 1rem;
+    
+    textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+}
