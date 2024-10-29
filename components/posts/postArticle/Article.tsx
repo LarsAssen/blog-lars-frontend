@@ -2,20 +2,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
-  CalendarDays,
+  Calendar,
   Clock,
   ThumbsUp,
-  Share2,
+  Share,
   Facebook,
   Twitter,
   Linkedin,
   Mail,
-} from "lucide-react";
+} from "react-feather";
+
 import Title from "@/components/UI/Title";
 import Content from "./Content";
-import { Post } from "@/types";
+import type { Post } from "@/types";
 import Button from "@/components/UI/Button";
-import styles from "@/styles/Posts/Article.module.scss";
+import styles from "./Article.module.scss";
 
 const Article: React.FC<{ post: Post }> = ({ post }) => {
   const [liked, setLiked] = useState(false);
@@ -51,7 +52,7 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
           <Title level={1}>{post.Title}</Title>
           <p>{post.subtitle || "Subtitle goes here"}</p>
           <div className={styles["info-row"]}>
-            <CalendarDays /> {post.date || "Date"}
+            <Calendar /> {post.date || "Date"}
             <Clock /> {post.readTime || "Read time"}
           </div>
         </div>
@@ -96,7 +97,7 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
         </Button>
         <div className={styles["share-buttons"]}>
           <Button variant="outline">
-            <Share2 /> Share
+            <Share /> Share
           </Button>
           <Button variant="outline">
             <Facebook />
