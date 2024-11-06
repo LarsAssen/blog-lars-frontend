@@ -12,7 +12,7 @@ const Comments = () => {
       </div>
       <form>
         <textarea placeholder="Leave a comment..." />
-        <Button type="submit">Post Comment</Button>
+        <Button>Post Comment</Button>
       </form>
     </div>
   );
