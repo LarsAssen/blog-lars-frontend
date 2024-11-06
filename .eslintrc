@@ -10,6 +10,14 @@
 		"plugin:react-hooks/recommended",
 		"next/core-web-vitals"
 	],
+	// "parser": "@typescript-eslint/parser",
+	// "parserOptions": {
+	// 	"ecmaFeatures": {
+	// 		"jsx": true
+	// 	},
+	// 	"ecmaVersion": 12,
+	// 	"sourceType": "module"
+	// },
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
 		// Add any rules you prefer, e.g., "@typescript-eslint/no-unused-vars": "warn"
