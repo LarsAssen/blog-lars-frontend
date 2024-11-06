@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import type React from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -17,16 +18,10 @@ import Content from "./Content";
 import type { Post } from "@/types";
 import Button from "@/components/UI/Button";
 import styles from "./Article.module.scss";
+import ShareButtons from "../../share/ShareButtons";
+import PostNewsletterForm from "@/components/newsletter/PostNewsletterForm";
 
 const Article: React.FC<{ post: Post }> = ({ post }) => {
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(42); // Placeholder for initial count
-
-  const handleLike = () => {
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
-    setLiked(!liked);
-  };
-
   return (
     <div className={styles["post-container"]}>
       {/* Header with Image & Breadcrumb */}
@@ -65,9 +60,9 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
         </Link>
       </div>
 
-      <div className={styles["title-container"]}>
+      {/* <div className={styles["title-container"]}>
         <Title level={1}>{post.Title}</Title>
-      </div>
+      </div> */}
 
       <div className={styles["category-pill"]}>
         <span>{post.category}</span>
@@ -79,70 +74,19 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
         ))}
       </div>
 
-      <div className={styles["header-image"]}>
+      {/* <div className={styles["header-image"]}>
         <Image
           src={post.HeaderImage}
           alt={post.Title}
           layout="fill"
           objectFit="cover"
         />
-      </div>
+      </div> */}
 
       <Content content={post.Content} />
 
-      {/* Like & Share Buttons */}
-      <div style={{ margin: "2rem 0" }}>
-        <Button className={styles["like-button"]} onClick={handleLike}>
-          <ThumbsUp /> {likeCount} Likes
-        </Button>
-        <div className={styles["share-buttons"]}>
-          <Button variant="outline">
-            <Share /> Share
-          </Button>
-          <Button variant="outline">
-            <Facebook />
-          </Button>
-          <Button variant="outline">
-            <Twitter />
-          </Button>
-          <Button variant="outline">
-            <Linkedin />
-          </Button>
-          <Button variant="outline">
-            <Mail />
-          </Button>
-        </div>
-      </div>
-
-      {/* Newsletter Subscription */}
-      <div className={styles["newsletter"]}>
-        <Title level={3}>Subscribe to Our Newsletter</Title>
-        <p>
-          Get the latest ultrarunning tips, training advice, and exclusive
-          content delivered to your inbox.
-        </p>
-        <form>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            style={{ flexGrow: 1 }}
-          />
-          <Button type="submit">Subscribe</Button>
-        </form>
-      </div>
-
-      {/* Comments Section */}
-      <div className={styles["comments-section"]}>
-        <Title level={3}>Comments</Title>
-        <div style={{ marginBottom: "1rem" }}>
-          {/* Replace with dynamic comment rendering */}
-          <div>Comments will go here...</div>
-        </div>
-        <form>
-          <textarea placeholder="Leave a comment..." />
-          <Button type="submit">Post Comment</Button>
-        </form>
-      </div>
+      <ShareButtons />
+      <PostNewsletterForm />
     </div>
   );
 };
