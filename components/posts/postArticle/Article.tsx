@@ -45,10 +45,10 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
             /<span>Current Post</span>
           </nav>
           <Title level={1}>{post.Title}</Title>
-          <p>{post.subtitle || "Subtitle goes here"}</p>
+          <p>{post.Subtitle || "Subtitle goes here"}</p>
           <div className={styles["info-row"]}>
-            <Calendar /> {post.date || "Date"}
-            <Clock /> {post.readTime || "Read time"}
+            <Calendar /> {post.publishedAt || "Date"}
+            <Clock /> {post.ReadTime || "Read time"}
           </div>
         </div>
       </header>
