@@ -1,39 +1,38 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { BeehiivClient } from "@beehiiv/sdk";
 
-const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { email } = req.body;
+const beehiiv = new BeehiivClient({
+  apiKey: process.env.BEEHIIV_API_KEY!,
+});
 
-  if (!email) {
-    return res.status(400).json({ error: "Email is required" });
-  }
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method === "POST") {
+    const { email } = req.body;
 
-  try {
-    const API_KEY = process.env.CONVERTKIT_API_KEY; // Store this in your environment variables
-    const FORM_ID = process.env.CONVERTKIT_FORM_ID; // Store this in your environment variables
-
-    const response = await fetch(
-      `https://api.convertkit.com/v3/forms/${FORM_ID}/subscribe`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          api_key: API_KEY,
-          email,
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Failed to subscribe");
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
     }
 
-    const data = await response.json();
-    return res.status(200).json(data);
-  } catch (error) {
-    return res.status(500).json({ error: "" });
-  }
-};
+    try {
+      const publicationId = "your_publication_id_here"; // Replace with your actual publication ID
+      const response = await beehiiv.subscriptions.create(publicationId, {
+        email,
+        reactivateExisting: false,
+        sendWelcomeEmail: true,
+      });
 
-export default subscribe;
+      return res
+        .status(200)
+        .json({ message: "Subscription successful", data: response });
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      return res.status(500).json({ error: "Subscription failed" });
+    }
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+}
