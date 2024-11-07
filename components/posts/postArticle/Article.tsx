@@ -1,17 +1,7 @@
 import type React from "react";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Calendar,
-  Clock,
-  ThumbsUp,
-  Share,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Mail,
-} from "react-feather";
+import { Calendar, Clock } from "react-feather";
 
 import Title from "@/components/UI/Title";
 import Content from "./Content";
