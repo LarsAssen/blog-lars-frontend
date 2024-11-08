@@ -1,9 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { BeehiivClient } from "@beehiiv/sdk";
-
-const beehiiv = new BeehiivClient({
-  apiKey: process.env.BEEHIIV_API_KEY!,
-});
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
@@ -17,16 +12,32 @@ export default async function handler(
     }
 
     try {
-      const publicationId = "your_publication_id_here"; // Replace with your actual publication ID
-      const response = await beehiiv.subscriptions.create(publicationId, {
-        email,
-        reactivateExisting: false,
-        sendWelcomeEmail: true,
-      });
+      const response = await fetch(
+        "https://api.beehiiv.com/v2/publications/pub_9d5cd97c-e7f4-4fdf-a769-dfbfcc349356/subscriptions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
+          },
+          body: JSON.stringify({
+            email,
+            reactivate_existing: false,
+            send_welcome_email: true,
+          }),
+        }
+      );
 
+      const data = await response.json();
+
+      if (response.ok) {
+        return res
+          .status(200)
+          .json({ message: "Subscription successful", data });
+      }
       return res
-        .status(200)
-        .json({ message: "Subscription successful", data: response });
+        .status(500)
+        .json({ error: "Subscription failed", details: data });
     } catch (error) {
       console.error("Error subscribing:", error);
       return res.status(500).json({ error: "Subscription failed" });
