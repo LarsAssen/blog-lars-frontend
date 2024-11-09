@@ -14,7 +14,7 @@ const NewsletterForm: React.FC = () => {
         const response = await fetch("/api/subscriber-count");
         const data = await response.json();
         if (response.ok) {
-          setSubscriberCount(data.count);
+          setSubscriberCount(data.count.data.stats.active_subscriptions);
         } else {
           console.error("Failed to fetch subscriber count:", data.error);
         }
@@ -47,7 +47,7 @@ const NewsletterForm: React.FC = () => {
         const response = await fetch("/api/subscriber-count");
         const data = await response.json();
         if (response.ok) {
-          setSubscriberCount(data.count);
+          setSubscriberCount(data.count.data.stats.active_subscriptions);
         }
       };
       fetchUpdatedCount();
@@ -67,8 +67,8 @@ const NewsletterForm: React.FC = () => {
               and exclusive content.
             </p>
             {subscriberCount !== null && (
-              <p className={styles.subscriberCount}>
-                {/* Current Subscribers: {subscriberCount.toLocaleString()} */}
+              <p className={styles.subtitle}>
+                Current Subscribers: {subscriberCount.toLocaleString()}
               </p>
             )}
           </div>

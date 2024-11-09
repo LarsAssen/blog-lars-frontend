@@ -7,20 +7,19 @@ export default async function handler(
   if (req.method === "GET") {
     try {
       const response = await fetch(
-        "https://api.beehiiv.com/v2/publications/pub_9d5cd97c-e7f4-4fdf-a769-dfbfcc349356",
+        "https://api.beehiiv.com/v2/publications/pub_9d5cd97c-e7f4-4fdf-a769-dfbfcc349356?expand=stat_active_subscriptions",
         {
           headers: {
             Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
             "Content-Type": "application/json",
+            "Cache-Control": "no-cache",
           },
         }
       );
-
       const data = await response.json();
       console.log("Response data:", data);
       if (response.ok) {
-        const subscriberCount = data.publication?.subscriber_count;
-        res.status(200).json({ count: subscriberCount });
+        res.status(200).json({ count: data });
       } else {
         res.status(500).json({ error: "Failed to fetch subscriber count" });
       }
