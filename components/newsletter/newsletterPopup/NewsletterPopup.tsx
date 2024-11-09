@@ -13,7 +13,17 @@ function NewsletterPopup({ close }: { close: () => void }) {
 
   return (
     <OverlayContainer>
-      <div className={styles.overlayBackground} onClick={close} />
+      <div
+        className={styles.overlayBackground}
+        onClick={close}
+        onKeyUp={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            close();
+          }
+        }}
+        tabIndex={0}
+        role="button"
+      />
       <div
         className={styles.modal}
         {...overlayProps}
