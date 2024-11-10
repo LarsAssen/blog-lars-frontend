@@ -1,101 +1,119 @@
 /* SignupSection.module.scss */
 
 .newsletterForm {
-    width: 100%;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background-color: #2d4835;
-  
-    @media (min-width: 768px) {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
-  
-    @media (min-width: 1024px) {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-    }
+  width: 100%;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #2d4835;
+
+  @media (min-width: 768px) {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
-  
-  .container {
-    margin: 0 auto;
-    padding: 0 1rem;
-  
-    @media (min-width: 768px) {
-      padding: 0 1.5rem;
-    }
+
+  @media (min-width: 1024px) {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
   }
+}
   
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 768px) {
+    padding: 0 1.5rem;
   }
-  
-  .header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #f5f1ed;
+
+  @media (min-width: 640px) {
+    font-size: 2.25rem;
   }
-  
-  .title {
-    font-size: 1.875rem;
-    font-weight: bold;
-    letter-spacing: -0.05em;
-    color: #f5f1ed;
-  
-    @media (min-width: 640px) {
-      font-size: 2.25rem;
-    }
-  
-    @media (min-width: 768px) {
-      font-size: 3rem;
-    }
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
   }
-  
-  .subtitle {
-    max-width: 600px;
-    margin: 0 auto;
-    color: rgba(245, 241, 237, 0.8);
-  
-    @media (min-width: 768px) {
-      font-size: 1.25rem;
-      line-height: 1.75rem;
-    }
+}
+
+.subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: rgba(245, 241, 237, 0.8);
+
+  @media (min-width: 768px) {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
-  
-  .formWrapper {
-    width: 100%;
-    max-width: 24rem;
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input {
+  flex: 1;
+  max-width: 32rem;
+  padding: 0.5rem;
+  background-color: #f5f1ed;
+  color: #29434d;
+  border: none;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  background-color: #d1703a;
+  color: #f5f1ed;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(209, 112, 58, 0.9);
   }
-  
-  .form {
-    display: flex;
-    gap: 0.5rem;
+}
+.successMessage {
+  font-size: 1.2em;
+  color: #4caf50;
+  animation: fadeIn 0.5s ease-in-out;
+  text-align: center;
+  padding: 1em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
-  
-  .input {
-    flex: 1;
-    max-width: 32rem;
-    padding: 0.5rem;
-    background-color: #f5f1ed;
-    color: #29434d;
-    border: none;
-    border-radius: 4px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .button {
-    padding: 0.5rem 1rem;
-    background-color: #d1703a;
-    color: #f5f1ed;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: rgba(209, 112, 58, 0.9);
-    }
-  }
+}
   

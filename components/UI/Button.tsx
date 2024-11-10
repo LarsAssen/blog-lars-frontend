@@ -3,10 +3,11 @@ import { ThemeContext } from "@/pages/_app";
 import { StyledButton } from "@/styles/UI/ButtonStyles";
 
 type Props = {
-  children: React.ReactNode;
-  onClick?: () => void;
+  children: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   variant?: "primary" | "secondary";
   size?: "small" | "medium" | "large";
+  className?: string;
 };
 
 const Button: React.FC<Props> = ({
@@ -14,12 +15,19 @@ const Button: React.FC<Props> = ({
   onClick,
   variant = "primary",
   size = "medium",
+  className,
 }) => {
   const context = useContext(ThemeContext);
   const theme = context?.theme;
 
   return (
-    <StyledButton theme={theme} onClick={onClick} variant={variant} size={size}>
+    <StyledButton
+      className={className}
+      theme={theme}
+      onClick={onClick}
+      variant={variant}
+      size={size}
+    >
       {children}
     </StyledButton>
   );

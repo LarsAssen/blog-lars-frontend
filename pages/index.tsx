@@ -4,7 +4,6 @@ import NewsletterForm from "@/components/newsletter/NewsletterForm";
 import BlogPostList from "@/components/posts/postLists/BlogPostList";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { env } from "process";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 
@@ -21,9 +20,6 @@ const Home: React.FC = () => {
     }
   };
 
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 500], [0, 200]);
-  const y2 = useTransform(scrollY, [0, 500], [0, -100]);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -43,7 +39,7 @@ const Home: React.FC = () => {
           content="Welcome to my blog. I hope you enjoy it."
         />
       </Head>
-      <Hero y1={y1} y2={y2} />
+      <Hero />
       <BlogPostList limit={4} />
       <div ref={newsletterRef}>
         <NewsletterForm />
