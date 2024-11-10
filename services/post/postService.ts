@@ -1,7 +1,7 @@
 import client from "@/lib/apollo-client";
 import { mapPosts } from "@/mappers/postMapper";
 import { GET_BLOG_POSTS } from "@/queries/postQueries";
-import { Post } from "@/types/index";
+import type { Post } from "@/types/index";
 
 export const getPosts = async (): Promise<Post[]> => {
   try {
