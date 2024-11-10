@@ -64,15 +64,6 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
         ))}
       </div>
 
-      {/* <div className={styles["header-image"]}>
-        <Image
-          src={post.HeaderImage}
-          alt={post.Title}
-          layout="fill"
-          objectFit="cover"
-        />
-      </div> */}
-
       <Content content={post.Content} />
 
       <ShareButtons />
