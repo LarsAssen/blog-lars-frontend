@@ -1,23 +1,28 @@
 import Title from "@/components/UI/Title";
 import { HeaderImage, PostContainer } from "@/styles/Posts/ArticleStyles";
-import { ContentBlock, Post } from "@/types";
+import type { ContentBlock, Post } from "@/types";
 import Content from "./Content";
-import React from "react";
+import type React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/UI/Button";
 import styled from "styled-components";
-import { CategoryIcon, TagIcon, TagPill, TagsContainer } from "@/styles/Posts/BlogPostCardStyles";
+import {
+  CategoryIcon,
+  TagIcon,
+  TagPill,
+  TagsContainer,
+} from "@/styles/Posts/BlogPostCardStyles";
 
 interface ArticleProps {
-    title: string;
-    imageUrl: string;
-    content: ContentBlock[];
+  title: string;
+  imageUrl: string;
+  content: ContentBlock[];
 }
 
 const BackButtonDiv = styled.div`
-    margin-bottom: 1rem;
-    display: flex;
+  margin-bottom: 1rem;
+  display: flex;
 `;
 
 export const CategoryPill = styled.div`
@@ -40,35 +45,40 @@ export const TitleContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Article: React.FC<{post: Post}> = ({post}) => {
-    return (
-        <PostContainer>
-            <BackButtonDiv>
-            <Link href="/posts" passHref> 
-                <Button >Back to posts</Button>
-            </Link>
-            </BackButtonDiv>
-            <TitleContainer>
-            <Title level={1}>{post.Title}</Title>
-            </TitleContainer>
-            <CategoryPill>
-                        <CategoryIcon />
-                        {post.category}
-                    </CategoryPill>
-            <TagsContainer>
-                    {post.tags.map((tag, index) => (
-                        <TagPill key={index}>
-                        <TagIcon />
-                        {tag}
-                        </TagPill>
-                    ))}
-                </TagsContainer>
-            <HeaderImage>
-            <Image src={post.HeaderImage} alt={post.Title} layout='fill' objectFit='cover'/>
-            </HeaderImage>
-            <Content content={post.Content} />
-        </PostContainer>
-    )
-}
+const Article: React.FC<{ post: Post }> = ({ post }) => {
+  return (
+    <PostContainer>
+      <BackButtonDiv>
+        <Link href="/posts" passHref>
+          <Button>Back to posts</Button>
+        </Link>
+      </BackButtonDiv>
+      <TitleContainer>
+        <Title level={1}>{post.Title}</Title>
+      </TitleContainer>
+      <CategoryPill>
+        <CategoryIcon />
+        {post.category}
+      </CategoryPill>
+      <TagsContainer>
+        {post.tags.map((tag, index) => (
+          <TagPill key={index}>
+            <TagIcon />
+            {tag}
+          </TagPill>
+        ))}
+      </TagsContainer>
+      <HeaderImage>
+        <Image
+          src={post.HeaderImage}
+          alt={post.Title}
+          layout="fill"
+          objectFit="cover"
+        />
+      </HeaderImage>
+      <Content content={post.Content} />
+    </PostContainer>
+  );
+};
 
 export default Article;
