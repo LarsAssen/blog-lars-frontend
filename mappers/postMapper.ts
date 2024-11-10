@@ -1,10 +1,11 @@
-import { Post } from "@/types";
+import type { Post } from "@/types";
 
 export const mapPost = (post: any): Post => {
   if (!post) {
     return {
       id: "",
       Title: "",
+      Subtitle: "",
       Description: "",
       ReadTime: 0,
       Slug: "",
@@ -21,6 +22,7 @@ export const mapPost = (post: any): Post => {
   return {
     id: post.id,
     Title: post.attributes.Title,
+    Subtitle: "",
     Description: post.attributes.Description,
     ReadTime: post.attributes.ReadTime,
     Slug: post.attributes.Slug,
