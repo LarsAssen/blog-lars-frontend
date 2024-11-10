@@ -8,6 +8,7 @@ export interface ContentBlock {
 export interface Post {
   id: string;
   Title: string;
+  Subtitle: string;
   Description: string;
   ReadTime: number;
   Slug: string;
