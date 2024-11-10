@@ -7,7 +7,6 @@ import {
   Linkedin,
   Mail,
 } from "react-feather";
-import styles from "./ShareButtons.module.scss";
 import Button from "../UI/Button";
 
 const ShareButtons = () => {
