@@ -3,7 +3,7 @@ import { ThemeContext } from "@/pages/_app";
 import { StyledButton } from "@/styles/UI/ButtonStyles";
 
 type Props = {
-  children: string;
+  children: React.ReactNode;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   variant?: "primary" | "secondary";
   size?: "small" | "medium" | "large";

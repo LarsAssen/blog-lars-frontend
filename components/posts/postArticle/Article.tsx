@@ -1,83 +1,76 @@
-import Title from "@/components/UI/Title";
-import { HeaderImage, PostContainer } from "@/styles/Posts/ArticleStyles";
-import type { ContentBlock, Post } from "@/types";
-import Content from "./Content";
 import type React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { Calendar, Clock } from "react-feather";
+
+import Title from "@/components/UI/Title";
+import Content from "./Content";
+import type { Post } from "@/types";
 import Button from "@/components/UI/Button";
-import styled from "styled-components";
-import {
-  CategoryIcon,
-  TagIcon,
-  TagPill,
-  TagsContainer,
-} from "@/styles/Posts/BlogPostCardStyles";
-
-interface ArticleProps {
-  title: string;
-  imageUrl: string;
-  content: ContentBlock[];
-}
-
-const BackButtonDiv = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-`;
-
-export const CategoryPill = styled.div`
-  display: inline-flex; /* Changed to inline-flex to wrap content naturally */
-  align-items: center;
-  background-color: ${({ theme }) => theme.secondaryColor};
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 15px;
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-`;
-
-export const TitleContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
-`;
+import styles from "./Article.module.scss";
+import ShareButtons from "../../share/ShareButtons";
+import PostNewsletterForm from "@/components/newsletter/PostNewsletterForm";
 
 const Article: React.FC<{ post: Post }> = ({ post }) => {
   return (
-    <PostContainer>
-      <BackButtonDiv>
+    <div className={styles["post-container"]}>
+      {/* Header with Image & Breadcrumb */}
+      <header className={styles["header-container"]}>
+        <div className={styles["header-image-container"]}>
+          <Image
+            src={post.HeaderImage}
+            alt={post.Title}
+            layout="fill"
+            objectFit="cover"
+            className={styles["header-image-content"]}
+          />
+          <div className={styles["header-overlay"]} />
+        </div>
+        <div className={styles["breadcrumb-container"]}>
+          <nav aria-label="Breadcrumb">
+            <Link href="/" passHref>
+              Home
+            </Link>{" "}
+            /
+            <Link href="/posts" passHref>
+              Blog
+            </Link>{" "}
+            /<span>Current Post</span>
+          </nav>
+        </div>
+
+        <div className={styles["title-container"]}>
+          <Title level={1}>{post.Title}</Title>
+          <p>{post.Subtitle || "Subtitle goes here"}</p>
+        </div>
+
+        <div className={styles["info-row"]}>
+          <Calendar /> {post.publishedAt || "Date"}
+          <Clock /> {post.ReadTime || "Read time"}
+        </div>
+
+        <div className={styles["category-pill"]}>{post.category}</div>
+
+        <div className={styles["tags-container"]}>
+          {post.tags.map((tag, index) => (
+            <span key={index} className={styles["tag-pill"]}>
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+
+      <div className={styles["back-button"]}>
         <Link href="/posts" passHref>
           <Button>Back to posts</Button>
         </Link>
-      </BackButtonDiv>
-      <TitleContainer>
-        <Title level={1}>{post.Title}</Title>
-      </TitleContainer>
-      <CategoryPill>
-        <CategoryIcon />
-        {post.category}
-      </CategoryPill>
-      <TagsContainer>
-        {post.tags.map((tag, index) => (
-          <TagPill key={index}>
-            <TagIcon />
-            {tag}
-          </TagPill>
-        ))}
-      </TagsContainer>
-      <HeaderImage>
-        <Image
-          src={post.HeaderImage}
-          alt={post.Title}
-          layout="fill"
-          objectFit="cover"
-        />
-      </HeaderImage>
+      </div>
+
       <Content content={post.Content} />
-    </PostContainer>
+
+      <ShareButtons />
+      <PostNewsletterForm />
+    </div>
   );
 };
 

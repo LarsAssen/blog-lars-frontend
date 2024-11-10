@@ -9,7 +9,7 @@ import { Calendar, Clock, ArrowRight } from "react-feather";
 const BlogPostCard: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <div className={styles.card}>
-      <a href={`/blog/${post.Slug}`} className={styles.link}>
+      <a href={`/posts/${post.Slug}`} className={styles.link}>
         <div className={styles.imageWrapper}>
           <img
             src={post.HeaderImage}
