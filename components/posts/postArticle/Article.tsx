@@ -16,14 +16,17 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
     <div className={styles["post-container"]}>
       {/* Header with Image & Breadcrumb */}
       <header className={styles["header-container"]}>
-        <Image
-          src={post.HeaderImage}
-          alt={post.Title}
-          layout="fill"
-          objectFit="cover"
-        />
-        <div className={styles["header-overlay"]} />
-        <div className={styles["header-content"]}>
+        <div className={styles["header-image-container"]}>
+          <Image
+            src={post.HeaderImage}
+            alt={post.Title}
+            layout="fill"
+            objectFit="cover"
+            className={styles["header-image-content"]}
+          />
+          <div className={styles["header-overlay"]} />
+        </div>
+        <div className={styles["breadcrumb-container"]}>
           <nav aria-label="Breadcrumb">
             <Link href="/" passHref>
               Home
@@ -34,34 +37,33 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
             </Link>{" "}
             /<span>Current Post</span>
           </nav>
+        </div>
+
+        <div className={styles["title-container"]}>
           <Title level={1}>{post.Title}</Title>
           <p>{post.Subtitle || "Subtitle goes here"}</p>
-          <div className={styles["info-row"]}>
-            <Calendar /> {post.publishedAt || "Date"}
-            <Clock /> {post.ReadTime || "Read time"}
-          </div>
+        </div>
+
+        <div className={styles["info-row"]}>
+          <Calendar /> {post.publishedAt || "Date"}
+          <Clock /> {post.ReadTime || "Read time"}
+        </div>
+
+        <div className={styles["category-pill"]}>{post.category}</div>
+
+        <div className={styles["tags-container"]}>
+          {post.tags.map((tag, index) => (
+            <span key={index} className={styles["tag-pill"]}>
+              {tag}
+            </span>
+          ))}
         </div>
       </header>
 
-      {/* Post Content */}
       <div className={styles["back-button"]}>
         <Link href="/posts" passHref>
           <Button>Back to posts</Button>
         </Link>
-      </div>
-
-      {/* <div className={styles["title-container"]}>
-        <Title level={1}>{post.Title}</Title>
-      </div> */}
-
-      <div className={styles["category-pill"]}>
-        <span>{post.category}</span>
-      </div>
-
-      <div className={styles["tags-container"]}>
-        {post.tags.map((tag, index) => (
-          <span key={index}>{tag}</span>
-        ))}
       </div>
 
       <Content content={post.Content} />
