@@ -32,7 +32,7 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
               Home
             </Link>{" "}
             /
-            <Link href="/blog" passHref>
+            <Link href="/posts" passHref>
               Blog
             </Link>{" "}
             /<span>Current Post</span>
