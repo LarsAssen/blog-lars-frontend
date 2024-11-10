@@ -21,23 +21,23 @@ const ShareButtons = () => {
 
   return (
     <div style={{ margin: "2rem 0" }}>
-      <Button className={styles["like-button"]} onClick={handleLike}>
+      <Button onClick={handleLike}>
         <ThumbsUp /> {likeCount} Likes
       </Button>
-      <div className={styles["share-buttons"]}>
-        <Button variant="outline">
+      <div>
+        <Button>
           <Share /> Share
         </Button>
-        <Button variant="outline">
+        <Button>
           <Facebook />
         </Button>
-        <Button variant="outline">
+        <Button>
           <Twitter />
         </Button>
-        <Button variant="outline">
+        <Button>
           <Linkedin />
         </Button>
-        <Button variant="outline">
+        <Button>
           <Mail />
         </Button>
       </div>
