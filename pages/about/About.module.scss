@@ -1,0 +1,84 @@
+/* AboutPage.module.scss */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .aboutSection {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    width: 85%;
+    max-width: 1100px;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+  }
+  
+  .imageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .profileImage {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+  
+  .textColumn {
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  .heading {
+    font-size: 2.8rem;
+    color: #d1703a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .paragraph {
+    font-size: 1.2rem;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+  
+  .highlight {
+    color: #0077ff;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .socialSection {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+  
+  .icon {
+    font-size: 1.8rem;
+    color: #333;
+    transition: color 0.3s, transform 0.3s;
+    &:hover {
+      color: #d1703a;
+      transform: scale(1.2) rotate(-10deg);
+    }
+  }
+  
