@@ -17,7 +17,6 @@ export default async function handler(
         }
       );
       const data = await response.json();
-      console.log("Response data:", data);
       if (response.ok) {
         res.status(200).json({ count: data });
       } else {

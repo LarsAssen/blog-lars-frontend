@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
+import SEO from "@/components/SEO/SEO";
 
 const Home: React.FC = () => {
   const router = useRouter();
@@ -32,13 +33,7 @@ const Home: React.FC = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>Lars Assen</title>
-        <meta
-          name="description"
-          content="Welcome to my blog. I hope you enjoy it."
-        />
-      </Head>
+      <SEO title="Home" description="Welcome to my blog." />
       <Hero />
       <BlogPostList limit={4} />
       <div ref={newsletterRef}>
