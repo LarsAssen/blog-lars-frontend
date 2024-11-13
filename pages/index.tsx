@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import SEO from "@/components/SEO/SEO";
+import { getPosts } from "@/services/post/postService";
+import type { Post } from "@/types";
 
 const Home: React.FC = () => {
   const router = useRouter();
   const newsletterRef = useRef<HTMLDivElement>(null);
-  const handlePrimaryButtonClick = () => {
-    router.push("/posts");
-  };
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const handleSecondaryButtonClick = () => {
     if (newsletterRef.current) {
@@ -27,6 +27,15 @@ const Home: React.FC = () => {
     setIsMounted(true);
   }, []);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const posts = await getPosts();
+      const limitedPosts = posts.slice(0, 4);
+      setPosts(limitedPosts);
+    };
+    fetchPosts();
+  }, []);
+
   if (!isMounted) {
     return null;
   }
@@ -35,7 +44,7 @@ const Home: React.FC = () => {
     <Layout>
       <SEO title="Home" description="Welcome to my blog." />
       <Hero />
-      <BlogPostList limit={4} />
+      <BlogPostList posts={posts} />
       <div ref={newsletterRef}>
         <NewsletterForm />
       </div>
