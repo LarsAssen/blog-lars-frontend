@@ -8,6 +8,7 @@ import Layout from "@/components/layout";
 import Article from "@/components/posts/postArticle/Article";
 import { useRouter } from "next/router";
 import SEO from "@/components/SEO/SEO";
+import ProgressScroller from "@/components/progressScroller/ProgressScroller";
 
 interface PostProps {
   post: Post;
@@ -31,6 +32,7 @@ const PostPage: React.FC<PostProps> = ({ post }) => {
   return (
     <Layout>
       <SEO title={post.Title} description={post.Description} />
+      <ProgressScroller />
       <Article post={post} />
     </Layout>
   );
