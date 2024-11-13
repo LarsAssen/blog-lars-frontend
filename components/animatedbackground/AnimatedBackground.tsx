@@ -21,7 +21,7 @@ const AnimatedBackground: React.FC = () => {
             left: `${Math.random() * 100}vw`,
             animationDelay: `${Math.random() * 10}s`,
           }}
-        />
+        ></div>
       ))}
     </div>
   );
