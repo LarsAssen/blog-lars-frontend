@@ -168,14 +168,6 @@ const AboutPage: React.FC = () => {
             </motion.a>
           ))}
         </motion.div>
-
-        {/* <footer className={styles.footer}>
-        <div className={styles.container}>
-          <p className="text">
-            © 2023 UltraRunner's Journey. All rights reserved.
-          </p>
-        </div>
-      </footer> */}
       </motion.div>
     </Layout>
   );
