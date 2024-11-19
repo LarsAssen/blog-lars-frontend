@@ -9,12 +9,15 @@ import type { Post } from "@/types";
 
 const categories = [
   "All",
-  "wellness",
-  "running",
-  "mindfulness",
-  "nutrition",
-  "philosophy",
+  "Wellness",
+  "Running",
+  "Mindfulness",
+  "Nutrition",
+  "Philosophy",
   "Health",
+  "Lifestyle",
+  "Personal",
+  "Newsletter",
 ];
 const BlogPage: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);

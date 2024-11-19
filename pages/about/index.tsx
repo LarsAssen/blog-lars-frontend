@@ -139,12 +139,12 @@ const AboutPage: React.FC = () => {
               and insights I've gained over years of ultrarunning.
             </p>
             <div className={styles.buttons}>
-              <Link href="/blog">
+              <Link href="/posts">
                 <Button className="primary">Read My Blog</Button>
               </Link>
-              <Link href="/coaching">
+              {/* <Link href="/coaching">
                 <Button className="outline">Explore Coaching</Button>
-              </Link>
+              </Link> */}
             </div>
           </motion.section>
         </motion.main>

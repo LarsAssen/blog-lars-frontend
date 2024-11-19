@@ -1,0 +1,8 @@
+.blogContainer {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center align items horizontally */
+    gap: 1rem;   
+    margin-bottom: 20px;           /* Add spacing between BlogPostList and the button */
+  }
+  
