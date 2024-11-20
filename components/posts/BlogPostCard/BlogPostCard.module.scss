@@ -47,6 +47,20 @@
     padding: 1rem;
     background-color: #29434d;
     color: #f5f1ed;
+    height: 150px; /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .description {
+    font-size: 0.875rem;
+    color: rgba(245, 241, 237, 0.8);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits text to 3 lines */
+    -webkit-box-orient: vertical;
+    height: 53px; /* Adjust height to match line-clamp */
   }
   
   .headerInfo {
@@ -79,14 +93,6 @@
     -webkit-box-orient: vertical;
   }
   
-  .description {
-    font-size: 0.875rem;
-    color: rgba(245, 241, 237, 0.8);
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
   
   .cardContent {
     padding: 1rem;

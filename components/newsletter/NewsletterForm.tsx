@@ -50,7 +50,7 @@ const NewsletterForm: React.FC = () => {
           setSubscriberCount(data.count.data.stats.active_subscriptions);
         }
       };
-      fetchUpdatedCount();
+      await fetchUpdatedCount();
     } else {
       setMessage(`Error: ${data.error}`);
     }
