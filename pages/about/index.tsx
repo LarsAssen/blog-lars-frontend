@@ -122,8 +122,8 @@ const AboutPage: React.FC = () => {
           >
             <h2 className="title">Philosophy</h2>
             <p className="text">
-              I believe that ultrarunning is more than just a sport – it's a
-              journey of self-discovery and personal growth.
+              I believe that ultrarunning is more than just a sport – it&apos;s
+              a journey of self-discovery and personal growth.
             </p>
           </motion.section>
 
@@ -136,7 +136,7 @@ const AboutPage: React.FC = () => {
             <h2 className="title">What I Offer</h2>
             <p className="text">
               Through this blog and my coaching services, I share the knowledge
-              and insights I've gained over years of ultrarunning.
+              and insights I&apos;ve gained over years of ultrarunning.
             </p>
             <div className={styles.buttons}>
               <Link href="/posts">
