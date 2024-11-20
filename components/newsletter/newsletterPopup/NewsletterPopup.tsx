@@ -117,7 +117,6 @@ const NewsletterPopup = ({ close }: { close: () => void }) => {
             className={styles.submitButton}
             size="large"
             variant="primary"
-            type="submit"
           >
             Subscribe
           </Button>
