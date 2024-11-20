@@ -1,4 +1,4 @@
-import { Post } from "@/types";
+import type { Post } from "@/types";
 import { format } from "date-fns";
 import Link from "next/link";
 import Title from "../../UI/Title";

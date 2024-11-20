@@ -1,40 +1,26 @@
-import React from "react";
-import { Post } from "@/types/index";
-import { getPosts } from "@/services/post/postService";
+import type React from "react";
+import type { Post } from "@/types/index";
 import BlogPostCard from "../BlogPostCard/BlogPostCard";
-import {
-  CardContainer,
-  StyledPostList,
-} from "@/styles/Posts/BlogPostCardStyles";
-import styled from "styled-components";
 import Title from "@/components/UI/Title";
+import styles from "./BlogPostList.module.scss";
 
 interface PostListProps {
-  limit?: number; // Optional prop to limit the number of posts
+  posts: Post[]; // The list of posts to display, passed from parent component
 }
 
-const BlogPostList: React.FC<PostListProps> = ({ limit }) => {
-  const [posts, setPosts] = React.useState<Post[]>([]);
-
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      const posts = await getPosts();
-      const limitedPosts = limit ? posts.slice(0, limit) : posts;
-      setPosts(limitedPosts);
-    };
-
-    fetchPosts();
-  }, []);
-
+const BlogPostList: React.FC<PostListProps> = ({ posts }) => {
   return (
-    <StyledPostList>
-      <Title level={1}>Blog Post List</Title>
-      <CardContainer>
+    <div className={styles.blogPostListContainer}>
+      <Title level={2}>Blog Post List</Title>
+      <div className={styles.postCounter}>
+        {posts.length} {posts.length === 1 ? "Post" : "Posts"} Available
+      </div>
+      <div className={styles.postGrid}>
         {posts.map((post) => (
           <BlogPostCard key={post.id} post={post} />
         ))}
-      </CardContainer>
-    </StyledPostList>
+      </div>
+    </div>
   );
 };
 
