@@ -1,5 +1,5 @@
 import type React from "react";
-import Button from "@/components/UI/Button";
+import { Button } from "@/components/UI/Button";
 import {
   motion,
   useScroll,
@@ -43,14 +43,14 @@ const Hero: React.FC = () => {
           </p>
           <div className={styles.heroButtons}>
             <Button
-              size="large"
-              variant="primary"
+              size="lg"
+              variant="outline"
               onClick={() => setPopupOpen(true)}
             >
               Get Weekly Insights
             </Button>
             <Link href="/posts" passHref>
-              <Button size="large">Explore the Blog</Button>
+              <Button size="lg">Explore the Blog</Button>
             </Link>
           </div>
         </div>

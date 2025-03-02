@@ -1,109 +1,173 @@
-// pages/dashboard.tsx
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+"use client";
 
-interface Post {
-  id: number;
+import { useEffect, useState } from "react";
+import {
+  type ColumnDef,
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+} from "@tanstack/react-table";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+
+type BlogPost = {
+  id: string;
   title: string;
   content: string;
-}
-
-const Dashboard = () => {
-  const router = useRouter();
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-    fetchPosts(token);
-  }, []);
-
-  const fetchPosts = async (token: string) => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.message || "Failed to fetch posts");
-        return;
-      }
-      setPosts(data);
-    } catch (err) {
-      setError("An error occurred while fetching posts.");
-    }
-  };
-
-  const handleDelete = async (postId: number) => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/login");
-      return;
-    }
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${postId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      if (!res.ok) {
-        const data = await res.json();
-        alert(data.message || "Failed to delete post");
-        return;
-      }
-      // Update state by filtering out the deleted post
-      setPosts(posts.filter((post) => post.id !== postId));
-    } catch (err) {
-      alert("An error occurred while deleting the post.");
-    }
-  };
-
-  return (
-    <div style={{ maxWidth: "800px", margin: "2rem auto" }}>
-      <h1>Dashboard</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={() => router.push("/create-post")}>
-        Create New Post
-      </button>
-      <h2>Your Posts</h2>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {posts.map((post) => (
-          <li
-            key={post.id}
-            style={{
-              marginBottom: "1rem",
-              border: "1px solid #ccc",
-              padding: "1rem",
-            }}
-          >
-            <h3>{post.title}</h3>
-            <p>{post.content.substring(0, 100)}...</p>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              <button onClick={() => router.push(`/view-post/${post.id}`)}>
-                View
-              </button>
-              <button onClick={() => router.push(`/edit-post/${post.id}`)}>
-                Edit
-              </button>
-              <button onClick={() => handleDelete(post.id)}>Delete</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  createdAt: string;
 };
 
-export default Dashboard;
+const fetchPosts = async (): Promise<BlogPost[]> => {
+  const token = localStorage.getItem("token"); // Adjust based on your auth mechanism
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!res.ok) throw new Error("Failed to fetch posts");
+  return res.json();
+};
+
+export default function BlogPostTable() {
+  const [data, setData] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const posts = await fetchPosts();
+        setData(posts);
+      } catch (err) {
+        setError("Failed to load posts");
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
+  const columns: ColumnDef<BlogPost>[] = [
+    {
+      accessorKey: "title",
+      header: "Title",
+      cell: (info) => info.getValue(),
+    },
+    {
+      accessorKey: "content",
+      header: "Content",
+      cell: (info) => info.getValue(),
+    },
+    {
+      accessorKey: "createdAt",
+      header: "Created At",
+      cell: (info) => new Date(info.getValue() as string).toLocaleDateString(),
+    },
+    {
+      id: "actions",
+      header: "Actions",
+      cell: ({ row }) => (
+        <div className="flex gap-2">
+          <Link href={`/view-post/${row.original.id}`}>
+            <Button
+              size="sm"
+              variant="outline"
+              className="hover:bg-blue-500 hover:text-white"
+            >
+              View
+            </Button>
+          </Link>
+          <Link href={`/edit-post/${row.original.id}`}>
+            <Button size="sm" variant="outline">
+              Edit
+            </Button>
+          </Link>
+          <Button
+            size="sm"
+            variant="destructive"
+            onClick={() => console.log("Delete", row.original.id)}
+          >
+            Delete
+          </Button>
+        </div>
+      ),
+    },
+  ];
+
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
+
+  if (loading) return <p>Loading posts...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
+  return (
+    <div className="p-8 max-w-5xl mx-auto">
+      <h2 className="text-3xl font-bold mb-6 text-center">Blog Posts</h2>
+      <div className="flex justify-end mb-4">
+        <Link href="/create-post">
+          <Button className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
+            + Create Post
+          </Button>
+        </Link>
+      </div>
+      <Card className="p-4 shadow-md border border-gray-200">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold">Admin Panel</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table className="rounded-lg overflow-hidden shadow-lg">
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id} className="bg-gray-100">
+                  {headerGroup.headers.map((header) => (
+                    <TableHead
+                      key={header.id}
+                      className="py-3 px-4 text-gray-700 uppercase"
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                    </TableHead>
+                  ))}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows.map((row, idx) => (
+                <TableRow
+                  key={row.id}
+                  className={`border-b ${
+                    idx % 2 === 0 ? "bg-white" : "bg-gray-50"
+                  } hover:bg-gray-200 transition-all`}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id} className="py-3 px-4">
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
