@@ -5,7 +5,7 @@ import { lightTheme, darkTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@/styles/globals.scss";
-
+import { Toaster } from "@/components/ui/sonner";
 export type ThemeContextType = {
   theme: DefaultTheme;
   setTheme: (themeName: "light" | "dark") => void;
@@ -31,6 +31,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <QueryClientProvider client={queryClient}>
+          <Toaster />
           <Component {...pageProps} />
         </QueryClientProvider>
       </ThemeProvider>
