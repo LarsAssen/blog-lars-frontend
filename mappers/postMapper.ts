@@ -9,7 +9,7 @@ export const mapPost = (post: any): Post => {
       Description: "",
       ReadTime: 0,
       Slug: "",
-      Content: [],
+      Content: [], // Could be string if not using structured content
       AllowComments: false,
       SEO: "",
       publishedAt: "",
@@ -20,22 +20,22 @@ export const mapPost = (post: any): Post => {
   }
 
   return {
-    id: post.id,
-    Title: post.attributes.Title,
-    Subtitle: "",
-    Description: post.attributes.Description,
-    ReadTime: post.attributes.ReadTime,
-    Slug: post.attributes.Slug,
-    Content: post.attributes.Content,
-    AllowComments: post.attributes.AllowComments,
-    SEO: post.attributes.SEO,
-    publishedAt: post.attributes.publishedAt,
-    HeaderImage: post.attributes.HeaderImage.data.attributes.url,
-    tags: post.attributes.tags.data.map((tag: any) => tag.attributes.Name),
-    category: post.attributes.category.data.attributes.Name,
+    id: post.documentId ?? "",
+    Title: post.title ?? "",
+    Subtitle: "", // Still unused
+    Description: post.description ?? "",
+    ReadTime: post.readTime ?? 0,
+    Slug: post.slug ?? "",
+    Content: post.content ?? [], // If it's raw HTML, update interface or convert
+    AllowComments: post.allowComments ?? false,
+    SEO: post.seo ?? "",
+    publishedAt: post.publishedAt ?? "",
+    HeaderImage: post.headerImage?.url ?? "",
+    tags: post.tags?.map((tag: any) => tag.name) ?? [],
+    category: post.category?.name ?? "",
   };
 };
 
 export const mapPosts = (posts: any[]): Post[] => {
-  return posts.map((post) => mapPost(post));
+  return posts.map(mapPost);
 };
