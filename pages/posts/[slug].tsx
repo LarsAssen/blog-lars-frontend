@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import type { Post } from "@/types";
 import type React from "react";
 import client from "@/lib/apollo-client";
-import { GET_ALL_POST_SLUGS, GET_POST_BY_SLUG } from "@/queries/postQueries";
+import { GET_ALL_POST_SLUGS, GET_BLOG_POSTS, GET_POST_BY_SLUG } from "@/queries/postQueries";
 import { mapPost } from "@/mappers/postMapper";
 import Layout from "@/components/layout";
 import Article from "@/components/posts/postArticle/Article";
@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       query: GET_ALL_POST_SLUGS,
     });
 
-    const slugs = data.posts.data.map((slug: any) => slug.attributes.Slug);
+    const slugs = data.posts.map((post: any) => post.slug);
     const paths = slugs.map((slug: any) => ({
       params: { slug },
     }));
@@ -63,48 +63,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
+
   try {
-    const { data, errors } = await client.query({
-      query: GET_POST_BY_SLUG,
-      variables: { slug: params?.slug },
+    const { data } = await client.query({
+      query: GET_BLOG_POSTS,
     });
 
-    if (errors) {
-      console.error(errors);
-      throw new Error(
-        `Errors returned from the server: ${errors
-          .map((e) => e.message)
-          .join(", ")}`
-      );
+    const postData = data.posts.find((p: any) => p.slug === slug);
+
+    if (!postData) {
+      console.error("Post not found for slug:", slug);
+      return { notFound: true };
     }
 
-    if (!data || !data.posts || !data.posts.data || !data.posts.data[0]) {
-      console.error("Data structure is not as expected:", data);
-      return {
-        notFound: true,
-      };
-    }
-
-    const post = mapPost(data.posts.data[0]);
-
-    if (!post) {
-      console.error("Post mapping resulted in undefined:", data.posts.data[0]);
-      return {
-        notFound: true,
-      };
-    }
+    const post = mapPost(postData);
 
     return {
-      props: {
-        post,
-      },
-      revalidate: 1,
+      props: { post },
+      revalidate: 60,
     };
-  } catch (error) {
-    console.error("Error fetching post:", error);
-    return {
-      notFound: true,
-    };
+  } catch (error: any) {
+    console.error("Apollo error:", error);
+    return { notFound: true };
   }
 };
 

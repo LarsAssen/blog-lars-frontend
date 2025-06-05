@@ -6,10 +6,10 @@ import { Calendar, Clock } from "react-feather";
 import Title from "@/components/UI/Title";
 import Content from "./Content";
 import type { Post } from "@/types";
-import Button from "@/components/UI/Button";
 import styles from "./Article.module.scss";
-import ShareButtons from "../../share/ShareButtons";
+// import ShareButtons from "../../share/ShareButtons";
 import PostNewsletterForm from "@/components/newsletter/PostNewsletterForm";
+import { Button } from "@/components/UI/Button";
 
 const Article: React.FC<{ post: Post }> = ({ post }) => {
   return (
@@ -17,13 +17,18 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
       {/* Header with Image & Breadcrumb */}
       <header className={styles["header-container"]}>
         <div className={styles["header-image-container"]}>
-          <Image
-            src={post.HeaderImage}
-            alt={post.Title}
-            layout="fill"
-            objectFit="cover"
-            className={styles["header-image-content"]}
-          />
+          {post.HeaderImage ? (
+  <Image
+    src={post.HeaderImage}
+    alt={post.Title}
+    layout="fill"
+    objectFit="cover"
+    className={styles["header-image-content"]}
+  />
+) : (
+  <div className={styles["header-image-fallback"]} />
+)}
+
           <div className={styles["header-overlay"]} />
         </div>
         <div className={styles["breadcrumb-container"]}>
@@ -44,10 +49,10 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
           <p>{post.Subtitle || "Subtitle goes here"}</p>
         </div>
 
-        <div className={styles["info-row"]}>
+        {/* <div className={styles["info-row"]}>
           <Calendar /> {post.publishedAt || "Date"}
           <Clock /> {post.ReadTime || "Read time"}
-        </div>
+        </div> */}
 
         <div className={styles["category-pill"]}>{post.category}</div>
 
@@ -68,8 +73,8 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
 
       <Content content={post.Content} />
 
-      <ShareButtons />
-      <PostNewsletterForm />
+      {/* <ShareButtons /> */}
+      {/* <PostNewsletterForm /> */}
     </div>
   );
 };

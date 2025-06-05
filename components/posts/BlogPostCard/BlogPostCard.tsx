@@ -1,8 +1,4 @@
 import type { Post } from "@/types";
-import { format } from "date-fns";
-import Link from "next/link";
-import Title from "../../UI/Title";
-import Button from "../../UI/Button";
 import styles from "./BlogPostCard.module.scss";
 import { Calendar, Clock, ArrowRight } from "react-feather";
 
