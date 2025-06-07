@@ -1,4 +1,5 @@
 import { StyledTitle } from "@/styles/UI/TitleStyles";
+import React from "react";
 
 interface TitleProps {
     children: React.ReactNode;
