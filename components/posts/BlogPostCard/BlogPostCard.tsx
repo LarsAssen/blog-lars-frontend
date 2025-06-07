@@ -1,6 +1,7 @@
 import type { Post } from "@/types";
 import styles from "./BlogPostCard.module.scss";
 import { Calendar, Clock, ArrowRight } from "react-feather";
+import React from "react";
 
 const BlogPostCard: React.FC<{ post: Post }> = ({ post }) => {
   return (

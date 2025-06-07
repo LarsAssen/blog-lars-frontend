@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../UI/Title";
-import Button from "../UI/Button";
 import styles from "./PostNewsletterForm.module.scss";
+import { Button } from "../UI/Button";
 
 const PostNewsletterForm = () => {
   return (

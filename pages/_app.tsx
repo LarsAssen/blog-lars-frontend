@@ -5,9 +5,10 @@ import { lightTheme, darkTheme } from "../styles/theme";
 import { GlobalStyles } from "../styles/GlobalStyles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@/styles/globals.scss";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "sonner";
 export type ThemeContextType = {
   theme: DefaultTheme;
+  // eslint-disable-next-line no-unused-vars
   setTheme: (themeName: "light" | "dark") => void;
 };
 

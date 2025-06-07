@@ -9,6 +9,7 @@ import { getPosts } from "@/services/post/postService";
 import type { Post } from "@/types";
 import { Button } from "@/styles/Newsletter/NewsletterStyles";
 import styles from "./Index.module.scss";
+import type React from "react";	
 
 const Home: React.FC = () => {
   const router = useRouter();

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
-import Button from '../UI/Button';
 import { MenuButton, MobileMenuContainer } from '@/styles/Nav/NavbarStyles';
 
 const MobileMenu = () => {

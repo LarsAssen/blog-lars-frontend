@@ -2,7 +2,7 @@ import type { GetStaticPaths, GetStaticProps } from "next";
 import type { Post } from "@/types";
 import type React from "react";
 import client from "@/lib/apollo-client";
-import { GET_ALL_POST_SLUGS, GET_BLOG_POSTS, GET_POST_BY_SLUG } from "@/queries/postQueries";
+import { GET_ALL_POST_SLUGS, GET_BLOG_POSTS } from "@/queries/postQueries";
 import { mapPost } from "@/mappers/postMapper";
 import Layout from "@/components/layout";
 import Article from "@/components/posts/postArticle/Article";
