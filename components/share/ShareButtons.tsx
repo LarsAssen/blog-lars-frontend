@@ -7,7 +7,7 @@ import {
   Linkedin,
   Mail,
 } from "react-feather";
-import Button from "../UI/Button";
+import { Button } from "../UI/Button";
 
 const ShareButtons = () => {
   const [liked, setLiked] = useState(false);
