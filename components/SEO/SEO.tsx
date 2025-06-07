@@ -1,5 +1,6 @@
 // components/SEO.tsx
 import Head from "next/head";
+import React from "react";
 
 interface SEOProps {
   title: string;

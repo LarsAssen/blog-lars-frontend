@@ -5,11 +5,10 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation"; // Use `next/router` for Pages Router
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/UI/card";
+import { Input } from "@/components/UI/input";
+import { Button } from "@/components/UI/Button";
 
-// 🛠️ Define the validation schema
 const loginSchema = z.object({
   email: z.string().email("Invalid email"),
   password: z.string().min(6, "Password must be at least 6 characters"),
@@ -71,10 +70,11 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Email Input */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <Input
+                id="email"
                 type="email"
                 {...register("email")}
                 placeholder="Enter your email"
@@ -86,10 +86,11 @@ export default function LoginPage() {
 
             {/* Password Input */}
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <Input
+                id="password"
                 type="password"
                 {...register("password")}
                 placeholder="Enter your password"

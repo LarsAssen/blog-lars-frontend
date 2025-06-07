@@ -7,8 +7,6 @@ import Title from "@/components/UI/Title";
 import Content from "./Content";
 import type { Post } from "@/types";
 import styles from "./Article.module.scss";
-// import ShareButtons from "../../share/ShareButtons";
-import PostNewsletterForm from "@/components/newsletter/PostNewsletterForm";
 import { Button } from "@/components/UI/Button";
 
 const Article: React.FC<{ post: Post }> = ({ post }) => {
@@ -49,10 +47,10 @@ const Article: React.FC<{ post: Post }> = ({ post }) => {
           <p>{post.Subtitle || "Subtitle goes here"}</p>
         </div>
 
-        {/* <div className={styles["info-row"]}>
+        <div className={styles["info-row"]}>
           <Calendar /> {post.publishedAt || "Date"}
           <Clock /> {post.ReadTime || "Read time"}
-        </div> */}
+        </div>
 
         <div className={styles["category-pill"]}>{post.category}</div>
 

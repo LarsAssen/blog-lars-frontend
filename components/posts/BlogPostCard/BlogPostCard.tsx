@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Post } from "@/types";
 import styles from "./BlogPostCard.module.scss";
 import { Calendar, Clock, ArrowRight } from "react-feather";
