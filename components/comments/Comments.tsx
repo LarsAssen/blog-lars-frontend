@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../UI/Title";
-import Button from "../UI/Button";
 import styles from "./Comments.module.scss";
+import { Button } from "../UI/Button";
 
 const Comments = () => {
   return (

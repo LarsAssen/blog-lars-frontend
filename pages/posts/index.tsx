@@ -6,6 +6,7 @@ import styles from "./BlogPage.module.scss";
 import { useEffect, useState } from "react";
 import { getPosts } from "@/services/post/postService";
 import type { Post } from "@/types";
+import React from "react";
 
 const categories = [
   "All",

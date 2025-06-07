@@ -6,7 +6,7 @@ import MobileMenu from './MobileMenu';
 import styled, { ThemeContext } from 'styled-components';
 import logo from '../../lib/logo.png';
 import logoLight from '../../lib/logo-light.png';
-
+import React from 'react';
 
 const Navbar: React.FC = () => {
     const [scrolled, setScrolled] = useState(false);

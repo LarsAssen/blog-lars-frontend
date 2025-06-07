@@ -2,7 +2,7 @@ import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { OverlayContainer, useOverlay, useModal, useDialog } from "react-aria";
 import styles from "./NewsletterPopup.module.scss";
-import Button from "@/components/UI/Button";
+import { Button } from "@/components/UI/Button";
 
 const NewsletterPopup = ({ close }: { close: () => void }) => {
   const [email, setEmail] = useState("");
@@ -115,8 +115,7 @@ const NewsletterPopup = ({ close }: { close: () => void }) => {
           </label>
           <Button
             className={styles.submitButton}
-            size="large"
-            variant="primary"
+            size="lg"
           >
             Subscribe
           </Button>

@@ -8,7 +8,7 @@ export const getPosts = async (): Promise<Post[]> => {
     const { data } = await client.query({
       query: GET_BLOG_POSTS,
     });
-    const posts = mapPosts(data.posts.data);
+    const posts = mapPosts(data.posts);
     return posts;
   } catch (error) {
     console.error(error);

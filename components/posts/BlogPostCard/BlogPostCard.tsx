@@ -1,10 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import type { Post } from "@/types";
-import { format } from "date-fns";
-import Link from "next/link";
-import Title from "../../UI/Title";
-import Button from "../../UI/Button";
 import styles from "./BlogPostCard.module.scss";
 import { Calendar, Clock, ArrowRight } from "react-feather";
+import React from "react";
 
 const BlogPostCard: React.FC<{ post: Post }> = ({ post }) => {
   return (

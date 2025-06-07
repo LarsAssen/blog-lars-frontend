@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Award, Book, Heart, Users, MapPin } from "react-feather";
+import { Heart } from "react-feather";
 import { Facebook, Instagram, Twitter, Linkedin } from "react-feather";
 import { motion } from "framer-motion";
 import styles from "./About.module.scss";
-import Button from "@/components/UI/Button";
+import React from "react";
+
 import Layout from "@/components/layout";
 import SEO from "@/components/SEO/SEO";
+import { Button } from "@/components/UI/Button";
 
 const socialLinks = [
   { href: "https://facebook.com", icon: Facebook },
